@@ -1,0 +1,472 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QuiltModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="QuiltModelStoreContainer">
+    <EntitySet Name="Orders" EntityType="QuiltModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Quilts" EntityType="QuiltModel.Store.Quilts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Recipients" EntityType="QuiltModel.Store.Recipients" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderHistories" EntityType="QuiltModel.Store.OrderHistories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DesignBlocks" EntityType="QuiltModel.Store.DesignBlocks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BOMs" EntityType="QuiltModel.Store.BOMs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Awards" EntityType="QuiltModel.Store.Awards" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="OrderQuilt" Association="QuiltModel.Store.OrderQuilt">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Quilt" EntitySet="Quilts" />
+    </AssociationSet>
+    <AssociationSet Name="OrderRecipient" Association="QuiltModel.Store.OrderRecipient">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Recipient" EntitySet="Recipients" />
+    </AssociationSet>
+    <AssociationSet Name="OrderOrderHistory" Association="QuiltModel.Store.OrderOrderHistory">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderHistory" EntitySet="OrderHistories" />
+    </AssociationSet>
+    <AssociationSet Name="QuiltDesignBlock" Association="QuiltModel.Store.QuiltDesignBlock">
+      <End Role="Quilt" EntitySet="Quilts" />
+      <End Role="DesignBlock" EntitySet="DesignBlocks" />
+    </AssociationSet>
+    <AssociationSet Name="QuiltBOM" Association="QuiltModel.Store.QuiltBOM">
+      <End Role="Quilt" EntitySet="Quilts" />
+      <End Role="BOM" EntitySet="BOMs" />
+    </AssociationSet>
+    <AssociationSet Name="QuiltAward" Association="QuiltModel.Store.QuiltAward">
+      <End Role="Quilt" EntitySet="Quilts" />
+      <End Role="Award" EntitySet="Awards" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartDate" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="EndDate" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Quilt_QuiltId" Type="int" Nullable="false" />
+    <Property Name="Recipient_RecipientId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Quilts">
+    <Key>
+      <PropertyRef Name="QuiltId" />
+    </Key>
+    <Property Name="QuiltId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DesignBlock_DesignBlockId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Recipients">
+    <Key>
+      <PropertyRef Name="RecipientId" />
+    </Key>
+    <Property Name="RecipientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address1" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address2" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderHistories">
+    <Key>
+      <PropertyRef Name="OrderHistoryId" />
+    </Key>
+    <Property Name="OrderHistoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Phase" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BeginDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EndDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Comments" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrderOrderId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DesignBlocks">
+    <Key>
+      <PropertyRef Name="DesignBlockId" />
+    </Key>
+    <Property Name="DesignBlockId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Genesis" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BOMs">
+    <Key>
+      <PropertyRef Name="BomId" />
+    </Key>
+    <Property Name="BomId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeOfItem" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Count" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="QuiltQuiltId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Awards">
+    <Key>
+      <PropertyRef Name="AwardId" />
+    </Key>
+    <Property Name="AwardId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AwardingBody" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateOfAward" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="QuiltQuiltId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="OrderQuilt">
+    <End Role="Order" Type="QuiltModel.Store.Orders" Multiplicity="*" />
+    <End Role="Quilt" Type="QuiltModel.Store.Quilts" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Quilt">
+        <PropertyRef Name="QuiltId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Quilt_QuiltId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderRecipient">
+    <End Role="Order" Type="QuiltModel.Store.Orders" Multiplicity="*" />
+    <End Role="Recipient" Type="QuiltModel.Store.Recipients" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Recipient">
+        <PropertyRef Name="RecipientId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Recipient_RecipientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderOrderHistory">
+    <End Role="Order" Type="QuiltModel.Store.Orders" Multiplicity="1" />
+    <End Role="OrderHistory" Type="QuiltModel.Store.OrderHistories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="OrderHistory">
+        <PropertyRef Name="OrderOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="QuiltDesignBlock">
+    <End Role="Quilt" Type="QuiltModel.Store.Quilts" Multiplicity="*" />
+    <End Role="DesignBlock" Type="QuiltModel.Store.DesignBlocks" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="DesignBlock">
+        <PropertyRef Name="DesignBlockId" />
+      </Principal>
+      <Dependent Role="Quilt">
+        <PropertyRef Name="DesignBlock_DesignBlockId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="QuiltBOM">
+    <End Role="Quilt" Type="QuiltModel.Store.Quilts" Multiplicity="1" />
+    <End Role="BOM" Type="QuiltModel.Store.BOMs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quilt">
+        <PropertyRef Name="QuiltId" />
+      </Principal>
+      <Dependent Role="BOM">
+        <PropertyRef Name="QuiltQuiltId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="QuiltAward">
+    <End Role="Quilt" Type="QuiltModel.Store.Quilts" Multiplicity="1" />
+    <End Role="Award" Type="QuiltModel.Store.Awards" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quilt">
+        <PropertyRef Name="QuiltId" />
+      </Principal>
+      <Dependent Role="Award">
+        <PropertyRef Name="QuiltQuiltId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="QuiltModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="QulltContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Orders" EntityType="QuiltModel.Order" />
+          <EntitySet Name="Quilts" EntityType="QuiltModel.Quilt" />
+          <AssociationSet Name="OrderQuilt" Association="QuiltModel.OrderQuilt">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Quilt" EntitySet="Quilts" />
+          </AssociationSet>
+          <EntitySet Name="Recipients" EntityType="QuiltModel.Recipient" />
+          <AssociationSet Name="OrderRecipient" Association="QuiltModel.OrderRecipient">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Recipient" EntitySet="Recipients" />
+          </AssociationSet>
+          <EntitySet Name="OrderHistories" EntityType="QuiltModel.OrderHistory" />
+          <AssociationSet Name="OrderOrderHistory" Association="QuiltModel.OrderOrderHistory">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderHistory" EntitySet="OrderHistories" />
+          </AssociationSet>
+          <EntitySet Name="DesignBlocks" EntityType="QuiltModel.DesignBlock" />
+          <AssociationSet Name="QuiltDesignBlock" Association="QuiltModel.QuiltDesignBlock">
+            <End Role="Quilt" EntitySet="Quilts" />
+            <End Role="DesignBlock" EntitySet="DesignBlocks" />
+          </AssociationSet>
+          <EntitySet Name="BOMs" EntityType="QuiltModel.BOM" />
+          <AssociationSet Name="QuiltBOM" Association="QuiltModel.QuiltBOM">
+            <End Role="Quilt" EntitySet="Quilts" />
+            <End Role="BOM" EntitySet="BOMs" />
+          </AssociationSet>
+          <EntitySet Name="Awards" EntityType="QuiltModel.Award" />
+          <AssociationSet Name="QuiltAward" Association="QuiltModel.QuiltAward">
+            <End Role="Quilt" EntitySet="Quilts" />
+            <End Role="Award" EntitySet="Awards" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Type="Int32" Name="OrderId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="StartDate" Nullable="true" />
+          <Property Type="String" Name="EndDate" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <NavigationProperty Name="Quilt" Relationship="QuiltModel.OrderQuilt" FromRole="Order" ToRole="Quilt" />
+          <NavigationProperty Name="Recipient" Relationship="QuiltModel.OrderRecipient" FromRole="Order" ToRole="Recipient" />
+          <NavigationProperty Name="OrderHistories" Relationship="QuiltModel.OrderOrderHistory" FromRole="Order" ToRole="OrderHistory" />
+        </EntityType>
+        <EntityType Name="Quilt">
+          <Key>
+            <PropertyRef Name="QuiltId" />
+          </Key>
+          <Property Type="Int32" Name="QuiltId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <NavigationProperty Name="Order" Relationship="QuiltModel.OrderQuilt" FromRole="Quilt" ToRole="Order" />
+          <NavigationProperty Name="DesignBlock" Relationship="QuiltModel.QuiltDesignBlock" FromRole="Quilt" ToRole="DesignBlock" />
+          <NavigationProperty Name="BOMs" Relationship="QuiltModel.QuiltBOM" FromRole="Quilt" ToRole="BOM" />
+          <NavigationProperty Name="Awards" Relationship="QuiltModel.QuiltAward" FromRole="Quilt" ToRole="Award" />
+        </EntityType>
+        <Association Name="OrderQuilt">
+          <End Type="QuiltModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="QuiltModel.Quilt" Role="Quilt" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Recipient">
+          <Key>
+            <PropertyRef Name="RecipientId" />
+          </Key>
+          <Property Type="Int32" Name="RecipientId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" />
+          <Property Type="String" Name="LastName" Nullable="false" />
+          <Property Type="String" Name="Address1" Nullable="false" />
+          <Property Type="String" Name="Address2" Nullable="false" />
+          <Property Type="String" Name="Type" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="QuiltModel.OrderRecipient" FromRole="Recipient" ToRole="Order" />
+        </EntityType>
+        <Association Name="OrderRecipient">
+          <End Type="QuiltModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="QuiltModel.Recipient" Role="Recipient" Multiplicity="1" />
+        </Association>
+        <EntityType Name="OrderHistory">
+          <Key>
+            <PropertyRef Name="OrderHistoryId" />
+          </Key>
+          <Property Type="Int32" Name="OrderHistoryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Phase" Nullable="false" />
+          <Property Type="String" Name="BeginDate" Nullable="false" />
+          <Property Type="String" Name="EndDate" Nullable="false" />
+          <Property Type="String" Name="Comments" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="QuiltModel.OrderOrderHistory" FromRole="OrderHistory" ToRole="Order" />
+          <Property Type="Int32" Name="OrderOrderId" Nullable="false" />
+        </EntityType>
+        <Association Name="OrderOrderHistory">
+          <End Type="QuiltModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="QuiltModel.OrderHistory" Role="OrderHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderHistory">
+              <PropertyRef Name="OrderOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DesignBlock">
+          <Key>
+            <PropertyRef Name="DesignBlockId" />
+          </Key>
+          <Property Type="Int32" Name="DesignBlockId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="String" Name="Genesis" Nullable="false" />
+          <NavigationProperty Name="Quilt" Relationship="QuiltModel.QuiltDesignBlock" FromRole="DesignBlock" ToRole="Quilt" />
+        </EntityType>
+        <Association Name="QuiltDesignBlock">
+          <End Type="QuiltModel.Quilt" Role="Quilt" Multiplicity="1" />
+          <End Type="QuiltModel.DesignBlock" Role="DesignBlock" Multiplicity="1" />
+        </Association>
+        <EntityType Name="BOM">
+          <Key>
+            <PropertyRef Name="BomId" />
+          </Key>
+          <Property Type="Int32" Name="BomId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TypeOfItem" Nullable="false" />
+          <Property Type="String" Name="Count" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <NavigationProperty Name="Quilt" Relationship="QuiltModel.QuiltBOM" FromRole="BOM" ToRole="Quilt" />
+          <Property Type="Int32" Name="QuiltQuiltId" Nullable="false" />
+        </EntityType>
+        <Association Name="QuiltBOM">
+          <End Type="QuiltModel.Quilt" Role="Quilt" Multiplicity="1" />
+          <End Type="QuiltModel.BOM" Role="BOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quilt">
+              <PropertyRef Name="QuiltId" />
+            </Principal>
+            <Dependent Role="BOM">
+              <PropertyRef Name="QuiltQuiltId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Award">
+          <Key>
+            <PropertyRef Name="AwardId" />
+          </Key>
+          <Property Type="Int32" Name="AwardId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="AwardingBody" Nullable="false" />
+          <Property Type="String" Name="DateOfAward" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <NavigationProperty Name="Quilt" Relationship="QuiltModel.QuiltAward" FromRole="Award" ToRole="Quilt" />
+          <Property Type="Int32" Name="QuiltQuiltId" Nullable="false" />
+        </EntityType>
+        <Association Name="QuiltAward">
+          <End Type="QuiltModel.Quilt" Role="Quilt" Multiplicity="1" />
+          <End Type="QuiltModel.Award" Role="Award" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quilt">
+              <PropertyRef Name="QuiltId" />
+            </Principal>
+            <Dependent Role="Award">
+              <PropertyRef Name="QuiltQuiltId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QuiltModelStoreContainer" CdmEntityContainer="QulltContext">
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="IsTypeOf(QuiltModel.Order)">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quilts">
+      <EntityTypeMapping TypeName="IsTypeOf(QuiltModel.Quilt)">
+        <MappingFragment StoreEntitySet="Quilts">
+          <ScalarProperty Name="QuiltId" ColumnName="QuiltId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recipients">
+      <EntityTypeMapping TypeName="IsTypeOf(QuiltModel.Recipient)">
+        <MappingFragment StoreEntitySet="Recipients">
+          <ScalarProperty Name="RecipientId" ColumnName="RecipientId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderHistories">
+      <EntityTypeMapping TypeName="IsTypeOf(QuiltModel.OrderHistory)">
+        <MappingFragment StoreEntitySet="OrderHistories">
+          <ScalarProperty Name="OrderHistoryId" ColumnName="OrderHistoryId" />
+          <ScalarProperty Name="Phase" ColumnName="Phase" />
+          <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="OrderOrderId" ColumnName="OrderOrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DesignBlocks">
+      <EntityTypeMapping TypeName="IsTypeOf(QuiltModel.DesignBlock)">
+        <MappingFragment StoreEntitySet="DesignBlocks">
+          <ScalarProperty Name="DesignBlockId" ColumnName="DesignBlockId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Genesis" ColumnName="Genesis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BOMs">
+      <EntityTypeMapping TypeName="IsTypeOf(QuiltModel.BOM)">
+        <MappingFragment StoreEntitySet="BOMs">
+          <ScalarProperty Name="BomId" ColumnName="BomId" />
+          <ScalarProperty Name="TypeOfItem" ColumnName="TypeOfItem" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="QuiltQuiltId" ColumnName="QuiltQuiltId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Awards">
+      <EntityTypeMapping TypeName="IsTypeOf(QuiltModel.Award)">
+        <MappingFragment StoreEntitySet="Awards">
+          <ScalarProperty Name="AwardId" ColumnName="AwardId" />
+          <ScalarProperty Name="AwardingBody" ColumnName="AwardingBody" />
+          <ScalarProperty Name="DateOfAward" ColumnName="DateOfAward" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="QuiltQuiltId" ColumnName="QuiltQuiltId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="OrderQuilt" TypeName="QuiltModel.OrderQuilt" StoreEntitySet="Orders">
+      <EndProperty Name="Quilt">
+        <ScalarProperty Name="QuiltId" ColumnName="Quilt_QuiltId" />
+      </EndProperty>
+      <EndProperty Name="Order">
+        <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrderRecipient" TypeName="QuiltModel.OrderRecipient" StoreEntitySet="Orders">
+      <EndProperty Name="Recipient">
+        <ScalarProperty Name="RecipientId" ColumnName="Recipient_RecipientId" />
+      </EndProperty>
+      <EndProperty Name="Order">
+        <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="QuiltDesignBlock" TypeName="QuiltModel.QuiltDesignBlock" StoreEntitySet="Quilts">
+      <EndProperty Name="DesignBlock">
+        <ScalarProperty Name="DesignBlockId" ColumnName="DesignBlock_DesignBlockId" />
+      </EndProperty>
+      <EndProperty Name="Quilt">
+        <ScalarProperty Name="QuiltId" ColumnName="QuiltId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

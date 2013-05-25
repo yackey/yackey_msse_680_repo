@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0ae992d0b1c64fff9b397d80bdb8e1c2" Name="Diagram1" >
+        <EntityTypeShape EntityType="QuiltModel.Order" Width="1.5" PointX="2.75" PointY="0.625" />
+        <EntityTypeShape EntityType="QuiltModel.Quilt" Width="1.5" PointX="5.125" PointY="0.625" />
+        <AssociationConnector Association="QuiltModel.OrderQuilt" />
+        <EntityTypeShape EntityType="QuiltModel.Recipient" Width="1.5" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="QuiltModel.OrderRecipient" />
+        <EntityTypeShape EntityType="QuiltModel.OrderHistory" Width="1.5" PointX="0.5" PointY="3.375" />
+        <AssociationConnector Association="QuiltModel.OrderOrderHistory" />
+        <EntityTypeShape EntityType="QuiltModel.DesignBlock" Width="1.5" PointX="4.75" PointY="3.75" />
+        <AssociationConnector Association="QuiltModel.QuiltDesignBlock" />
+        <EntityTypeShape EntityType="QuiltModel.BOM" Width="1.5" PointX="9" PointY="0.5" />
+        <AssociationConnector Association="QuiltModel.QuiltBOM" />
+        <EntityTypeShape EntityType="QuiltModel.Award" Width="1.5" PointX="7.5" PointY="2.875" />
+        <AssociationConnector Association="QuiltModel.QuiltAward" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
