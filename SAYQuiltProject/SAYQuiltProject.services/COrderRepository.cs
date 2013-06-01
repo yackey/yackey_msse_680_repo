@@ -9,7 +9,7 @@ namespace SAYQuiltProject.services
 {
     public class OrderRepository : Repository<Order>
     {
-        public OrderRepository(QulltContext context) : base(context)
+        public OrderRepository(ObjectContext context) : base(context)
         {
         }
 

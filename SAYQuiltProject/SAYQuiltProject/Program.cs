@@ -79,6 +79,18 @@ namespace SAYQuiltProject
                     Order xo = xq.Order;
                     Recipient xr = xo.Recipient;
 
+                    List<OrderHistory> listOrderHistory = xo.OrderHistories.ToList();
+                    foreach (var item in listOrderHistory)
+                    {
+                        db.OrderHistories.Remove(item);
+                    }
+
+                    List<Award> listAward = xq.Awards.ToList();
+                    foreach (var item in listAward)
+                    {
+                        db.Awards.Remove(item);
+                    }
+
                     List<BOM> listBom = xq.BOMs.ToList();
                     foreach (var item in listBom)
                     {
