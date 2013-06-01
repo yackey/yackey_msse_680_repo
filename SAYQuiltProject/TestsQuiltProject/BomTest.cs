@@ -39,6 +39,12 @@ namespace TestsQuiltProject
                     Order xo = xq.Order;
                     Recipient xr = xo.Recipient;
 
+                    List<OrderHistory> listOrderHistory = xo.OrderHistories.ToList();
+                    foreach (var item in listOrderHistory)
+                    {
+                        db.OrderHistories.Remove(item);
+                    }
+
                     List<Award> listAward = xq.Awards.ToList();
                     foreach (var item in listAward)
                     {
@@ -108,7 +114,7 @@ namespace TestsQuiltProject
                 //
                 db.SaveChanges();
                 // Display all Quilts/Orders/Recipients from the database
-                var query = from o in db.Orders
+                var query = from o in db.BOMs
                             orderby o.Description
                             select o;
 

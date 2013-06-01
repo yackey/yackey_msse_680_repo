@@ -41,11 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CFactory.cs" />
+    <Compile Include="COrderSvcAdoImpl.cs" />
+    <Compile Include="IOrderSvc.cs" />
     <Compile Include="ServicesProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SAYQuiltProject\SAYQuiltProject.csproj">
+      <Project>{84fb6091-b8cf-44dc-a6f6-4d28b30d3a08}</Project>
+      <Name>SAYQuiltProject</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

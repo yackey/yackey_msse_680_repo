@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SAYQuiltProject;
 
 namespace SAYQuiltProject.services
 {
-    class ServicesProgram
+    public class CFactory
     {
-        static void Main(string[] args)
+        public IOrderSvc GetOrderSvc()
         {
-
+            return new COrderSvcAdoImpl();
         }
     }
 }

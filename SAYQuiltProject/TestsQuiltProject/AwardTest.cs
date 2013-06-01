@@ -13,7 +13,7 @@ namespace TestsQuiltProject
     {
 
         [Test]
-        public void TestBOMAddList()
+        public void TestAwardAddList()
         {
             using (var db = new QulltContext())
             {
@@ -37,6 +37,12 @@ namespace TestsQuiltProject
                     DesignBlock xb = xq.DesignBlock;
                     Order xo = xq.Order;
                     Recipient xr = xo.Recipient;
+
+                    List<OrderHistory> listOrderHistory = xo.OrderHistories.ToList();
+                    foreach (var item in listOrderHistory)
+                    {
+                        db.OrderHistories.Remove(item);
+                    }
 
                     List<Award> listAward = xq.Awards.ToList();
                     foreach (var item in listAward)
@@ -107,7 +113,7 @@ namespace TestsQuiltProject
                 //
                 db.SaveChanges();
                 // Display all Quilts/Orders/Recipients from the database
-                var query = from o in db.Orders
+                var query = from o in db.Awards
                             orderby o.Description
                             select o;
 
