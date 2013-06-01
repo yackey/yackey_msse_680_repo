@@ -13,5 +13,21 @@ namespace SAYQuiltProject.services
         {
 
         }
+
+        static void TryItOut()
+        {
+            var db = new QulltContext();
+            // Get reference to OrderRepository.
+            OrderRepository orderRepo = new OrderRepository(db);
+
+            orderRepo = (OrderRepository)SimpleRepositoryFactory.Create<IOrderRepository>(orderRepo);
+
+            // Get all users.
+            string [] includes = {""};
+            //List<Order> orders = orderRepo.GetAll(includes);
+            IEnumerable<Order> ol = orderRepo.GetAll(includes);
+
+            //orderRepo.Commit();
+        }
     }
 }

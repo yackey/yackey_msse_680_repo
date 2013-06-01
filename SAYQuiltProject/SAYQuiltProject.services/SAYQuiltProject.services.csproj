@@ -32,9 +32,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.ServiceModel.DomainServices.EntityFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,14 +50,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CFactory.cs" />
+    <Compile Include="CInternalRepositoryFactory.cs" />
+    <Compile Include="COrderRepository.cs" />
+    <Compile Include="CQuiltRepository.cs" />
+    <Compile Include="CRepository.cs" />
     <Compile Include="COrderSvcAdoImpl.cs" />
     <Compile Include="COrderSvcSOAPImpl.cs" />
+    <Compile Include="CSimpleRepositoryFactory.cs" />
+    <Compile Include="CUnitOfWork.cs" />
+    <Compile Include="IOrderRepository.cs" />
     <Compile Include="IOrderSvc.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="IUnitOfWorkFactory.cs" />
     <Compile Include="ServicesProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SAYQuiltProject\SAYQuiltProject.csproj">
