@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +47,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SAYQuiltProject.services\SAYQuiltProject.services.csproj">
+      <Project>{7d6e892f-6342-4c25-b124-c73661dd139f}</Project>
+      <Name>SAYQuiltProject.services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SAYQuiltProject\SAYQuiltProject.csproj">
+      <Project>{84fb6091-b8cf-44dc-a6f6-4d28b30d3a08}</Project>
+      <Name>SAYQuiltProject</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

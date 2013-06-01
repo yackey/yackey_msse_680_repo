@@ -9,7 +9,7 @@ namespace SAYQuiltProject.services
     public interface IOrderSvc
     {
         void StoreOrder(Order ord);
-        Order GetOrder(int id);
+        Order RetrieveOrder(int id);
         void UpdateOrder(Order ord);
         void DeleteOrder(Order ord);
     }

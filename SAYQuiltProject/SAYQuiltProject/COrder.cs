@@ -9,6 +9,7 @@ namespace SAYQuiltProject
     using System;
     using System.Collections.Generic;
 
+    [Serializable]
     public partial class Order
     {
         public bool Validate()

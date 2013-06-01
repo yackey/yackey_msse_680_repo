@@ -13,7 +13,7 @@ namespace SAYQuiltProject.services
             Console.WriteLine("Entering StoreOrder");
         }
 
-        public Order GetOrder(int id)
+        public Order RetrieveOrder(int id)
         {
             Console.WriteLine("Entering GetOrder");
             return new Order();

@@ -10,7 +10,8 @@ namespace SAYQuiltProject.services
     {
         public IOrderSvc GetOrderSvc()
         {
-            return new COrderSvcAdoImpl();
+            //return new COrderSvcAdoImpl();
+            return new COrderSvcSOAPImpl();
         }
     }
 }
