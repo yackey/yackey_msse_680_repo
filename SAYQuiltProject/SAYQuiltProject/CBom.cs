@@ -9,7 +9,7 @@ namespace SAYQuiltProject
     using System;
     using System.Collections.Generic;
 
-    public partial class BOM
+    public partial class BOM : IBOM
     {
         public bool Validate()
         {

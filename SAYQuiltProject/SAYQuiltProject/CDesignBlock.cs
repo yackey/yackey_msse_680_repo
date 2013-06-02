@@ -9,7 +9,7 @@ namespace SAYQuiltProject
     using System;
     using System.Collections.Generic;
 
-    public partial class DesignBlock
+    public partial class DesignBlock : IDesignBlock
     {
         public bool Validate()
         {

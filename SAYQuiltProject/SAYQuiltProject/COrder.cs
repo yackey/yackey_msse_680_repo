@@ -10,7 +10,7 @@ namespace SAYQuiltProject
     using System.Collections.Generic;
 
     [Serializable]
-    public partial class Order
+    public partial class Order : IOrder
     {
         public bool Validate()
         {

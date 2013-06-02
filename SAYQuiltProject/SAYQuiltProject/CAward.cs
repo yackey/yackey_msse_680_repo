@@ -9,7 +9,7 @@ namespace SAYQuiltProject
     using System;
     using System.Collections.Generic;
 
-    public partial class Award
+    public partial class Award : IAward
     {
         public bool Validate()
         {

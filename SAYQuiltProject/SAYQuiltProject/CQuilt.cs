@@ -10,7 +10,7 @@ namespace SAYQuiltProject
     using System.Collections.Generic;
 
     [Serializable]
-    public partial class Quilt
+    public partial class Quilt : IQuilt
     {
         public bool Validate()
         {

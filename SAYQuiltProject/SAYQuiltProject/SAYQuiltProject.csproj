@@ -68,6 +68,13 @@
     <Compile Include="DesignBlock.cs">
       <DependentUpon>QuiltModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="IAward.cs" />
+    <Compile Include="IBOM.cs" />
+    <Compile Include="IDesignBlock.cs" />
+    <Compile Include="IOrder.cs" />
+    <Compile Include="IOrderHistory.cs" />
+    <Compile Include="IQuilt.cs" />
+    <Compile Include="IRecipient.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>QuiltModel.tt</DependentUpon>
     </Compile>

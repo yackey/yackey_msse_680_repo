@@ -10,7 +10,7 @@ namespace SAYQuiltProject
     using System.Collections.Generic;
 
     [Serializable]
-    public partial class Recipient
+    public partial class Recipient : IRecipient
     {
         public bool Validate()
         {

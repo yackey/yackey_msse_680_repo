@@ -9,7 +9,7 @@ namespace SAYQuiltProject
     using System;
     using System.Collections.Generic;
 
-    public partial class OrderHistory
+    public partial class OrderHistory : IOrderHistory
     {
         public bool Validate()
         {
