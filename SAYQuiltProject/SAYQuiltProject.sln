@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAYQuiltProject.business", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAYQuiltProject.presentation", "SAYQuiltProject.presentation\SAYQuiltProject.presentation.csproj", "{6B606E8A-0135-4182-B3C9-849E6F39FA0B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestServices", "TestServices\TestServices.csproj", "{ECD4B396-4877-4119-8033-1F97799AF8DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{6B606E8A-0135-4182-B3C9-849E6F39FA0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B606E8A-0135-4182-B3C9-849E6F39FA0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B606E8A-0135-4182-B3C9-849E6F39FA0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECD4B396-4877-4119-8033-1F97799AF8DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECD4B396-4877-4119-8033-1F97799AF8DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECD4B396-4877-4119-8033-1F97799AF8DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECD4B396-4877-4119-8033-1F97799AF8DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

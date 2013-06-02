@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SAYQuiltProject;
+using SAYQuiltProject.services;
+
 using System.Data.Objects;
 using System.Data.Entity.Infrastructure;
 
-namespace SAYQuiltProject.services
+namespace TestServices
 {
-    class ServicesProgram
+    class TestServicesProgram
     {
         static void Main(string[] args)
         {
@@ -19,7 +21,6 @@ namespace SAYQuiltProject.services
         static void TryItOut()
         {
             using (QulltContext context = new QulltContext())
-
             {
                 string[] includes = { "" };
                 //
