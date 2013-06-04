@@ -13,6 +13,11 @@ namespace SAYQuiltProject.services
         private readonly ObjectContext _context;
         private OrderRepository _orders;
         private QuiltRepository _quilts;
+        private AwardRepository _awards;
+        private BomRepository _boms;
+        private RecipientRepository _recipients;
+        private DesignBlockRepository _designblocks;
+        private OrderHistoryRepository _orderhistorys;
 
         public UnitOfWork(ObjectContext context)
         {
@@ -30,6 +35,7 @@ namespace SAYQuiltProject.services
         }
 
         #region IUnitOfWork Members
+        // order
         public IRepository<Order> Orders
         {
             get
@@ -38,11 +44,10 @@ namespace SAYQuiltProject.services
                 {
                     _orders = new OrderRepository(_context);
                 }
-
                 return _orders;
             }
         }
-
+        // quilt
         public IRepository<Quilt> Quilts
         {
             get
@@ -54,7 +59,67 @@ namespace SAYQuiltProject.services
                 return _quilts;
             }
         }
-
+        // award
+        public IRepository<Award> Awards
+        {
+            get
+            {
+                if (_awards == null)
+                {
+                    _awards = new AwardRepository(_context);
+                }
+                return _awards;
+            }
+        }
+        // recipient
+        public IRepository<Recipient> Recipients
+        {
+            get
+            {
+                if (_recipients == null)
+                {
+                    _recipients = new RecipientRepository(_context);
+                }
+                return _recipients;
+            }
+        }
+        // bom
+        public IRepository<BOM> Boms
+        {
+            get
+            {
+                if (_boms == null)
+                {
+                    _boms = new BomRepository(_context);
+                }
+                return _boms;
+            }
+        }
+        // designblock
+        public IRepository<DesignBlock> DesignBlocks
+        {
+            get
+            {
+                if (_designblocks == null)
+                {
+                    _designblocks = new DesignBlockRepository(_context);
+                }
+                return _designblocks;
+            }
+        }
+        // orderhistory
+        public IRepository<OrderHistory> OrderHistorys
+        {
+            get
+            {
+                if (_orderhistorys == null)
+                {
+                    _orderhistorys = new OrderHistoryRepository(_context);
+                }
+                return _orderhistorys;
+            }
+        }
+        //
         public void Commit()
         {
             _context.SaveChanges();

@@ -10,6 +10,11 @@ namespace SAYQuiltProject.services
     {
         IRepository<Order> Orders { get; }
         IRepository<Quilt> Quilts { get; }
+        IRepository<Award> Awards { get; }
+        IRepository<BOM> Boms { get; }
+        IRepository<Recipient> Recipients { get; }
+        IRepository<DesignBlock> DesignBlocks { get; }
+        IRepository<OrderHistory> OrderHistorys { get; }
         void Commit();
     }
 }
