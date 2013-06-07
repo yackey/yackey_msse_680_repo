@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
@@ -49,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CServiceByNameFactory.cs" />
+    <Compile Include="CSimpleQuiltServiceImpl.cs" />
+    <Compile Include="ISimpleQuiltService.cs" />
     <Compile Include="Serialization\CFactory.cs" />
     <Compile Include="CInternalRepositoryFactory.cs" />
     <Compile Include="Repository Classes\CAwardRepository.cs" />

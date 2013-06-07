@@ -13,7 +13,18 @@ namespace SAYQuiltProject.services
     {
         static void Main(string[] args)
         {
-            TryItOut();
+            //TryItOut();
+            TryNewFactory();
+        }
+
+        private static void TryNewFactory()
+        {
+
+            CServiceByNameFactory factory = CServiceByNameFactory.GetInstance();
+            ISimpleQuiltService simpleQuiltSvc = (ISimpleQuiltService)factory.GetService("ISimpleQuiltService");
+            String[]  sAry = simpleQuiltSvc.GetProjectNames();
+            String s1 = sAry[0];
+            Console.WriteLine("s1 said {0}", s1);
         }
 
         static void TryItOut()
