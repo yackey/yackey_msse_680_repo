@@ -21,9 +21,11 @@ namespace SAYQuiltProject.services
             return factory;
         }
 
-        public ISimpleQuiltService GetService(String serviceName)
+        public ISimpleService GetService(String serviceName)
         {
-            ReadAppSettings();
+            // for debug
+            // ReadAppSettings();
+            // 
             Object obj = null;
             try
             {

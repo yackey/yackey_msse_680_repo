@@ -13,7 +13,21 @@ namespace SAYQuiltProject.business
         static void Main(string[] args)
         {
             //TryStore();
-            TryRetrieve();
+            //TryRetrieve();
+            TryManager();
+        }
+
+        static void TryManager()
+        {
+            CSimpleQuiltManager qm = new CSimpleQuiltManager();
+            IEnumerable<Order> orderList = qm.GetOrders();
+
+            foreach (var item in orderList)
+            {
+                Console.WriteLine(item.Description);
+            }
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
         }
 
         static void TryStore()

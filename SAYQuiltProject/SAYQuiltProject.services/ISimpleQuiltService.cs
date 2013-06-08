@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace SAYQuiltProject.services
 {
-    public interface ISimpleQuiltService
+    public interface ISimpleQuiltService : ISimpleService
     {
         String [] GetProjectNames();
-        IUnitOfWork GetInformationStore();
+        IUnitOfWork GetInformationStoreUow();
+        IRepository<Order> GetOrderInformationStore();
         bool SaveProject(String sProjectName);
+        IEnumerable<Order> GetOrderList();
     }
 }

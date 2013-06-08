@@ -10,23 +10,49 @@ namespace SAYQuiltProject.services
 {
     class CSimpleQuiltServiceImpl : ISimpleQuiltService
     {
+
         public String[] GetProjectNames()
         {
             String[] sAryNames = {"fake_1, fake_2"};
             return sAryNames;
         }
 
-        public IUnitOfWork GetInformationStore()
+        public IEnumerable<Order> GetOrderList()
         {
             using (QulltContext context = new QulltContext())
             {
                 string[] includes = {""};
                 //
                 ObjectContext oc = ((IObjectContextAdapter) context).ObjectContext;
+                IOrderRepository orderRepoFromFactory = SimpleRepositoryFactory.Create<IOrderRepository>(context);
+                // Get all orders.
+                IEnumerable<Order> olFact = orderRepoFromFactory.GetAll(includes);
+                return olFact;
+            }
+        }
+
+        public IRepository<Order> GetOrderInformationStore()
+        {
+            using (QulltContext context = new QulltContext())
+            {
+                string[] includes = {""};
+                IOrderRepository orderRepoFromFactory = SimpleRepositoryFactory.Create<IOrderRepository>(context);
+                return orderRepoFromFactory;
+            }
+        }
+
+        public IUnitOfWork GetInformationStoreUow()
+        {
+            using (QulltContext context = new QulltContext())
+            {
+                string[] includes = {""};
+                //
+                // ObjectContext oc = ((IObjectContextAdapter) context).ObjectContext;
+                ObjectContext ServiceImplOc = ((IObjectContextAdapter)context).ObjectContext;
                 //////////////////////////////////////////////////
                 // Repository via unit of work
                 //////////////////////////////////////////////////
-                UnitOfWork uow = new UnitOfWork(oc);
+                UnitOfWork uow = new UnitOfWork(ServiceImplOc);
                 return uow;
             }
         }

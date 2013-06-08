@@ -13,8 +13,8 @@ namespace SAYQuiltProject.services
     {
         static void Main(string[] args)
         {
-            //TryItOut();
-            TryNewFactory();
+            TryItOut();
+            //TryNewFactory();
         }
 
         private static void TryNewFactory()

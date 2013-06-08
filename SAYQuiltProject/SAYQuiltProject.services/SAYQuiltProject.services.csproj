@@ -53,6 +53,7 @@
     <Compile Include="CServiceByNameFactory.cs" />
     <Compile Include="CSimpleQuiltServiceImpl.cs" />
     <Compile Include="ISimpleQuiltService.cs" />
+    <Compile Include="ISimpleService.cs" />
     <Compile Include="Serialization\CFactory.cs" />
     <Compile Include="CInternalRepositoryFactory.cs" />
     <Compile Include="Repository Classes\CAwardRepository.cs" />
