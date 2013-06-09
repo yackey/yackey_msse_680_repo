@@ -7,7 +7,7 @@ using SAYQuiltProject.services;
 
 namespace SAYQuiltProject.business
 {
-    class CSimpleQuiltManager
+    public class CSimpleQuiltManager
     {
         // TODO seems like there ought to be some way to 'generic' all this up
         public IEnumerable<Order> GetOrders()  
@@ -75,6 +75,7 @@ namespace SAYQuiltProject.business
         public Order Find(int id)
         {
             // TODO call get orders and return the one
+            // or your service does have a 'by id' method
             return new Order();
         }
 

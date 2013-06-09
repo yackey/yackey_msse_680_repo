@@ -3,121 +3,65 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SAYQuiltProject.services;
+using NUnit.Framework;
+using SAYQuiltProject;
+using SAYQuiltProject.business;
 
-namespace SAYQuiltProject.business
+namespace TestSimpleManager
 {
-    class BusinessProgram
+    [TestFixture]
+    class ManagerTest
     {
         private static bool bDbInitDone = false;
-        static void Main(string[] args)
+
+        [Test]
+        public void ServiceViaManagerTest()
         {
             if (bDbInitDone == false)
             {
                 TryDeleteCreate();
-                bDbInitDone = true;
             }
-            //TryStore();
-            //TryRetrieve();
+
             TryManager();
         }
 
+        // use the manager to fetch data via service
         private static void TryManager()
         {
             CSimpleQuiltManager qm = new CSimpleQuiltManager();
 
             // orders
             IEnumerable<Order> orderList = qm.GetOrders();
-
-            foreach (var item in orderList)
-            {
-                Console.WriteLine(item.Description);
-            }
-            Console.WriteLine("Orders - Press any key to continue...");
-            Console.ReadKey();
+            Assert.IsTrue(orderList.Count() > 0);
 
             // bom
             IEnumerable<BOM> bomList = qm.GetBoms();
-
-            foreach (var item in bomList)
-            {
-                Console.WriteLine(item.Description);
-            }
-            Console.WriteLine("BOM - Press any key to continue...");
-            Console.ReadKey();
+            Assert.IsTrue(bomList.Count() > 0);
 
             // recipients
             IEnumerable<Recipient> recipientList = qm.GetRecipients();
-
-            foreach (var item in recipientList)
-            {
-                Console.WriteLine(item.FirstName);
-            }
-            Console.WriteLine("Recipient - Press any key to continue...");
-            Console.ReadKey();
+            Assert.IsTrue(recipientList.Count() > 0);
 
             // awards
             IEnumerable<Award> awardList = qm.GetAwards();
-
-            foreach (var item in awardList)
-            {
-                Console.WriteLine(item.Description);
-            }
-            Console.WriteLine("Award - Press any key to continue...");
-            Console.ReadKey();
+            Assert.IsTrue(awardList.Count() > 0);
 
             // quilts
             IEnumerable<Quilt> quiltList = qm.GetQuilts();
-
-            foreach (var item in quiltList)
-            {
-                Console.WriteLine(item.Description);
-            }
-            Console.WriteLine("Quilt - Press any key to continue...");
-            Console.ReadKey();
+            Assert.IsTrue(quiltList.Count() > 0);
 
             // design blocks
             IEnumerable<DesignBlock> designBlockList = qm.GetDesignBlocks();
-
-            foreach (var item in designBlockList)
-            {
-                Console.WriteLine(item.Description);
-            }
-            Console.WriteLine("Design Block - Press any key to continue...");
-            Console.ReadKey();
+            Assert.IsTrue(designBlockList.Count() > 0);
 
             // order history
             IEnumerable<OrderHistory> orderHistoryList = qm.GetOrderHistorys();
-
-            foreach (var item in orderHistoryList)
-            {
-                Console.WriteLine(item.Comments);
-            }
-            Console.WriteLine("Order History - Press any key to continue...");
-            Console.ReadKey();
+            Assert.IsTrue(orderHistoryList.Count() > 0);
 
         }
 
-        static void TryStore()
-        {
-            CFactory factory = new CFactory();
-            COrderSvcSOAPImpl soapImpl = (COrderSvcSOAPImpl)factory.GetOrderSvc();
-            Order order = new Order();
-            order.StartDate = "05/22/2013";
-            order.EndDate = "05/31/2013";
-            order.Description = "please serialize me";
-            order.OrderId = 12;
-            soapImpl.StoreOrder(order);
-        }
-
-        static void TryRetrieve()
-        {
-            CFactory factory = new CFactory();
-            COrderSvcSOAPImpl soapImpl = (COrderSvcSOAPImpl)factory.GetOrderSvc();
-            Order order = soapImpl.RetrieveOrder(12); ;
-        }
-
-        static void TryDeleteCreate()
+        // setup db
+        private void TryDeleteCreate()
         {
             using (var db = new QulltContext())
             {
@@ -235,6 +179,5 @@ namespace SAYQuiltProject.business
                 db.SaveChanges();
             }
         }
-
     }
 }

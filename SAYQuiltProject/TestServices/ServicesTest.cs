@@ -29,6 +29,19 @@ namespace TestServices
         }
 
         [Test]
+        public void ServiceViaAppConfig()
+        {
+            CServiceByNameFactory factory = CServiceByNameFactory.GetInstance();
+            ISimpleQuiltService simpleQuiltSvc = (ISimpleQuiltService)factory.GetService("ISimpleQuiltService");
+            IEnumerable<Order> objList = simpleQuiltSvc.GetOrderList();
+            // the test is to fetch the service by name thru the app config file
+            //  if any object list comes back then that worked
+            int nItemCount = objList.Count();
+            Assert.IsTrue(nItemCount >= 0);
+        }
+
+
+        [Test]
         public void ServiceRepoViaUow()
         {
             SetupServicesTest();
