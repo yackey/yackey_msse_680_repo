@@ -1,2 +1,2 @@
-use [master];
-select * from dbo.quilts;
+USE [master];
+select * from Orders;
