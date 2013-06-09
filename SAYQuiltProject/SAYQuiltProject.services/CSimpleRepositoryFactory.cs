@@ -40,7 +40,7 @@ namespace SAYQuiltProject.services
             {   // DesignBlock
                 return (T)InternalRepositoryFactory<IDesignBlockRepository, DesignBlockRepository>.Create(args);
             }
-            else if (typeof(T) == typeof(IOrderRepository))
+            else if (typeof(T) == typeof(IOrderHistoryRepository))
             {   // OrderHistory
                 return (T)InternalRepositoryFactory<IOrderHistoryRepository, OrderHistoryRepository>.Create(args);
             }

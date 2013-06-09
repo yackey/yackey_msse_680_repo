@@ -9,30 +9,85 @@ namespace SAYQuiltProject.business
 {
     class CSimpleQuiltManager
     {
-        public IEnumerable<Order> GetOrders()   // So maybe pass the context in as a param 
+        // TODO seems like there ought to be some way to 'generic' all this up
+        public IEnumerable<Order> GetOrders()  
         {
-            string[] includes = { "" };
             CServiceByNameFactory factory = CServiceByNameFactory.GetInstance();
             ISimpleQuiltService simpleQuiltSvc = (ISimpleQuiltService)factory.GetService("ISimpleQuiltService");
-            IEnumerable<Order> orderList = simpleQuiltSvc.GetOrderList();
-            return orderList;
+            IEnumerable<Order> objList = simpleQuiltSvc.GetOrderList();
+            return objList;
         }
-        
+
+        public IEnumerable<Award> GetAwards()
+        {
+            CServiceByNameFactory factory = CServiceByNameFactory.GetInstance();
+            ISimpleQuiltService simpleQuiltSvc = (ISimpleQuiltService)factory.GetService("ISimpleQuiltService");
+            IEnumerable<Award> objList = simpleQuiltSvc.GetAwardList();
+            return objList;
+        }
+
+        public IEnumerable<BOM> GetBoms()
+        {
+            CServiceByNameFactory factory = CServiceByNameFactory.GetInstance();
+            ISimpleQuiltService simpleQuiltSvc = (ISimpleQuiltService)factory.GetService("ISimpleQuiltService");
+            IEnumerable<BOM> objList = simpleQuiltSvc.GetBomList();
+            return objList;
+        }
+
+        public IEnumerable<Recipient> GetRecipients()
+        {
+            CServiceByNameFactory factory = CServiceByNameFactory.GetInstance();
+            ISimpleQuiltService simpleQuiltSvc = (ISimpleQuiltService)factory.GetService("ISimpleQuiltService");
+            IEnumerable<Recipient> objList = simpleQuiltSvc.GetRecipientList();
+            return objList;
+        }
+
+        public IEnumerable<DesignBlock> GetDesignBlocks()
+        {
+            CServiceByNameFactory factory = CServiceByNameFactory.GetInstance();
+            ISimpleQuiltService simpleQuiltSvc = (ISimpleQuiltService)factory.GetService("ISimpleQuiltService");
+            IEnumerable<DesignBlock> objList = simpleQuiltSvc.GetDesignBlockList();
+            return objList;
+        }
+
+        public IEnumerable<Quilt> GetQuilts()
+        {
+            CServiceByNameFactory factory = CServiceByNameFactory.GetInstance();
+            ISimpleQuiltService simpleQuiltSvc = (ISimpleQuiltService)factory.GetService("ISimpleQuiltService");
+            IEnumerable<Quilt> objList = simpleQuiltSvc.GetQuiltList();
+            return objList;
+        }
+
+        public IEnumerable<OrderHistory> GetOrderHistorys()
+        {
+            CServiceByNameFactory factory = CServiceByNameFactory.GetInstance();
+            ISimpleQuiltService simpleQuiltSvc = (ISimpleQuiltService)factory.GetService("ISimpleQuiltService");
+            IEnumerable<OrderHistory> objList = simpleQuiltSvc.GetOrderHistoryList();
+            return objList;
+        }
+  
+        // all you objects need some form of these
         public void Create(Order o)
         {
+            // TODO what do you want to do here
         }
 
         public Order Find(int id)
         {
+            // TODO call get orders and return the one
             return new Order();
         }
 
         public void Update(Order o)
         {
+            // TODO who actually does the save
+            // your repo doesn't have one
+            // the uow does
         }
 
         public void Delete(Order o)
         {
+            // TODO ditto save
         }
     }
 }
