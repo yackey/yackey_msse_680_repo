@@ -13,8 +13,26 @@ namespace SAYQuiltProject.services
     {
         static void Main(string[] args)
         {
-            TryItOut();
+            //TryItOut();
             //TryNewFactory();
+            TryNewFactoryUow();
+        }
+
+        private static void TryNewFactoryUow()
+        {
+            CServiceByNameFactory factory = CServiceByNameFactory.GetInstance();
+            IUnitOfWork simpleUow = (IUnitOfWork)factory.GetService("IUnitOfWork");
+            String[] sAry = simpleUow.GetProjectNames();
+            String s1 = sAry[0];
+            Console.WriteLine("s1 said {0}", s1);
+
+            IEnumerable<Order> olNew = simpleUow.GetOrderList();
+            foreach (var item in olNew)
+            {
+                Console.WriteLine(item.Description);
+            }
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
         }
 
         private static void TryNewFactory()

@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 
 namespace SAYQuiltProject.services
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : ISimpleService
     {
-        IRepository<Order> Orders { get; }
-        IRepository<Quilt> Quilts { get; }
-        IRepository<Award> Awards { get; }
-        IRepository<BOM> Boms { get; }
-        IRepository<Recipient> Recipients { get; }
-        IRepository<DesignBlock> DesignBlocks { get; }
-        IRepository<OrderHistory> OrderHistorys { get; }
-        void Commit();
+        String[] GetProjectNames();
+
+        bool SaveProject(String sProjectName);
+
+        IEnumerable<Order> GetOrderList(); 
+        IEnumerable<Quilt> GetQuiltList();
+        IEnumerable<Award> GetAwardList();
+        IEnumerable<Recipient> GetRecipientList();
+        IEnumerable<BOM> GetBomList();
+        IEnumerable<OrderHistory> GetOrderHistoryList();
+        IEnumerable<DesignBlock> GetDesignBlockList();
     }
 }
 

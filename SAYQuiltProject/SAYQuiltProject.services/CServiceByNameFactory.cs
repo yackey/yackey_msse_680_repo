@@ -39,7 +39,15 @@ namespace SAYQuiltProject.services
                 Console.WriteLine("Exception occured: {0}", e);
                 throw e;
             }
-            return (ISimpleQuiltService)obj;
+
+            if (serviceName.CompareTo("ISimpleQuiltService") == 0)
+            {
+                return (ISimpleQuiltService) obj;
+            }
+            else
+            {
+                return (IUnitOfWork) obj;
+            }
         }
 
         private String GetImplName(String serviceName)
