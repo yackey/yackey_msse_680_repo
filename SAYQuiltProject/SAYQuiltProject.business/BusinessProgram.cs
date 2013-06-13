@@ -9,7 +9,7 @@ namespace SAYQuiltProject.business
 {
     class BusinessProgram
     {
-        private static bool bDbInitDone = false;
+        private static bool bDbInitDone = true;
         static void Main(string[] args)
         {
             if (bDbInitDone == false)
@@ -19,7 +19,14 @@ namespace SAYQuiltProject.business
             }
             //TryStore();
             //TryRetrieve();
-            TryManager();
+            //TryManager();
+            TryOrderManager();
+        }
+
+        private static void TryOrderManager()
+        {
+            COrderManager om = new COrderManager();
+            om.DeleteOrder("CreateQuiltTest Name");
         }
 
         private static void TryManager()

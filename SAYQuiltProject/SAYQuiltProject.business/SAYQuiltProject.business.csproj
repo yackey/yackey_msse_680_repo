@@ -49,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessProgram.cs" />
+    <Compile Include="COrderManager.cs" />
+    <Compile Include="CSimpleManager.cs" />
     <Compile Include="CSimpleQuiltManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -10,6 +10,9 @@ namespace SAYQuiltProject.services
     {
         String [] GetProjectNames();
 
+        Order GetOrder(string sQuiltName);
+        IEnumerable<OrderHistory> GetOrderHistory(int nOrderId);
+
         //IUnitOfWork GetInformationStoreUow();
         //IRepository<Order> GetOrderInformationStore();
         bool SaveProject(String sProjectName);

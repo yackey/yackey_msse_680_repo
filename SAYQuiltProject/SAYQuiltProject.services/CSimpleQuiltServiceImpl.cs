@@ -17,6 +17,59 @@ namespace SAYQuiltProject.services
             return sAryNames;
         }
 
+        public Order GetOrder(string sQuiltName)
+        {
+            using (QulltContext context = new QulltContext())
+            {
+                string[] includes = { "" };
+                //
+                ObjectContext oc = ((IObjectContextAdapter)context).ObjectContext;
+                IOrderRepository orderRepoFromFactory = SimpleRepositoryFactory.Create<IOrderRepository>(context);
+                // Get all orders.
+                IEnumerable<Order> olFact = orderRepoFromFactory.GetAll(includes);
+                Order orderToDelete = null;
+
+                foreach (var item in olFact)
+                {
+                    if (item.Quilt.Name.CompareTo(sQuiltName) == 0)
+                    {
+                        orderToDelete = item;
+                        break;
+                    }
+                }
+                return orderToDelete;
+            }
+        }
+
+        public IEnumerable<OrderHistory> GetOrderHistory(int nOrderId)
+        {
+            using (QulltContext context = new QulltContext())
+            {
+                string[] includes = {""};
+                //
+                ObjectContext oc = ((IObjectContextAdapter) context).ObjectContext;
+                IOrderRepository orderRepoFromFactory = SimpleRepositoryFactory.Create<IOrderRepository>(context);
+                // Get all orders.
+                IEnumerable<Order> olFact = orderRepoFromFactory.GetAll(includes);
+                Order orderToUse = null;
+
+                foreach (var item in olFact)
+                {
+                    if (item.OrderId == nOrderId)
+                    {
+                        orderToUse = item;
+                        break;
+                    }
+                }
+                IEnumerable<OrderHistory> oh = null;
+                if (orderToUse != null)
+                {
+                    oh = orderToUse.OrderHistories;
+                }
+                return oh;
+            }
+        }
+
         public IEnumerable<Order> GetOrderList()
         {
             using (QulltContext context = new QulltContext())
