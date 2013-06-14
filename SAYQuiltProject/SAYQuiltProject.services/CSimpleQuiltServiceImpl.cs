@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Objects;
 using System.Data.Entity.Infrastructure;
+using SAYQuiltProject.services.Exceptions;
 
 namespace SAYQuiltProject.services
 {
@@ -37,6 +38,11 @@ namespace SAYQuiltProject.services
                         break;
                     }
                 }
+                if (orderToDelete == null)
+                {
+                    throw new CExceptionRequiredObjectNotFound(string.Format("No order for Quilt named '{0}' found",
+                                                                             sQuiltName));
+                }
                 return orderToDelete;
             }
         }
@@ -67,6 +73,52 @@ namespace SAYQuiltProject.services
                     oh = orderToUse.OrderHistories;
                 }
                 return oh;
+            }
+        }
+
+        public bool DeleteOrder(int nOrderId)
+        {
+            using (QulltContext db = new QulltContext())
+            {
+                bool bRet = false;
+                var orderToDelete = (from orders in db.Orders
+                                     where orders.OrderId == nOrderId
+                                     select orders).Single();
+                if (orderToDelete != null)
+                {
+                    // clean out all the piece/parts
+                    Quilt xq = orderToDelete.Quilt;
+                    DesignBlock xb = xq.DesignBlock;
+                    Recipient xr = orderToDelete.Recipient;
+
+                    List<OrderHistory> listOrderHistory = orderToDelete.OrderHistories.ToList();
+                    foreach (var item in listOrderHistory)
+                    {
+                        db.OrderHistories.Remove(item);
+                    }
+
+                    List<Award> listAward = xq.Awards.ToList();
+                    foreach (var item in listAward)
+                    {
+                        db.Awards.Remove(item);
+                    }
+
+                    List<BOM> listBom = xq.BOMs.ToList();
+                    foreach (var item in listBom)
+                    {
+                        db.BOMs.Remove(item);
+                    }
+
+                    db.Quilts.Remove(xq);
+                    db.DesignBlocks.Remove(xb);
+                    db.Orders.Remove(orderToDelete);
+                    db.Recipients.Remove(xr);
+
+                    db.SaveChanges();
+
+                    bRet = true;
+                }
+                return bRet;
             }
         }
 

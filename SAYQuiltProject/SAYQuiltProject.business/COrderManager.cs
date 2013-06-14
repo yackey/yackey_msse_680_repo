@@ -12,19 +12,36 @@ namespace SAYQuiltProject.business
         public void DeleteOrder(string sQuiltOrderToDelete)
         {
             // the business rule might be don't allow delete unless the order is cancelled
-            ISimpleQuiltService simpleQuiltSvc = (ISimpleQuiltService)GetService("ISimpleQuiltService");
-
-            Order orderToDelete = simpleQuiltSvc.GetOrder(sQuiltOrderToDelete);
-            if (orderToDelete == null)
+            ISimpleQuiltService simpleQuiltSvc = (ISimpleQuiltService) GetService("ISimpleQuiltService");
+            Order orderToDelete = null;
+            try
             {
-                // TODO throw here
+                orderToDelete = simpleQuiltSvc.GetOrder(sQuiltOrderToDelete);
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: {0}", ex.Message);
+                return;
+            }
+
             IEnumerable<OrderHistory> orderHistory = simpleQuiltSvc.GetOrderHistory(orderToDelete.OrderId);
 
+            bool bIsCancelled = false;
             foreach (var item in orderHistory)
             {
-                // todo if it doesnt say cancelled - throw
-                Console.WriteLine(item.Phase);
+                if (item.Phase.CompareTo("Cancelled") == 0)
+                {
+                    bIsCancelled = true;
+                    break;
+                }
+            }
+            if (bIsCancelled == false)
+            {
+                Console.WriteLine("The order has not been cancelled and cannot be deleted.");
+            }
+            else
+            {
+                bool bRet = simpleQuiltSvc.DeleteOrder(orderToDelete.OrderId);
             }
         }
     }

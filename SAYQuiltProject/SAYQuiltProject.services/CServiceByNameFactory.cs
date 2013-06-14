@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using SAYQuiltProject.services.Exceptions;
 
 namespace SAYQuiltProject.services
 {
@@ -36,8 +37,8 @@ namespace SAYQuiltProject.services
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception occured: {0}", e);
-                throw e;
+                //Console.WriteLine("Exception occured: {0}", e);
+                throw new CExceptionServiceNotFound(string.Format("No service named '{0}' found.", serviceName));
             }
 
             if (serviceName.CompareTo("ISimpleQuiltService") == 0)

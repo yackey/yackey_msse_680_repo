@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="CServiceByNameFactory.cs" />
     <Compile Include="CSimpleQuiltServiceImpl.cs" />
+    <Compile Include="Exceptions\CExceptionRequiredObjectNotFound.cs" />
+    <Compile Include="Exceptions\CExceptionServiceNotFound.cs" />
     <Compile Include="ISimpleQuiltService.cs" />
     <Compile Include="ISimpleService.cs" />
     <Compile Include="Serialization\CFactory.cs" />

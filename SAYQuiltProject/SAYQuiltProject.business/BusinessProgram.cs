@@ -9,7 +9,7 @@ namespace SAYQuiltProject.business
 {
     class BusinessProgram
     {
-        private static bool bDbInitDone = true;
+        private static bool bDbInitDone = false;
         static void Main(string[] args)
         {
             if (bDbInitDone == false)
@@ -21,6 +21,8 @@ namespace SAYQuiltProject.business
             //TryRetrieve();
             //TryManager();
             TryOrderManager();
+            Console.WriteLine("BusinessProgram - Press any key to continue...");
+            Console.ReadKey();
         }
 
         private static void TryOrderManager()

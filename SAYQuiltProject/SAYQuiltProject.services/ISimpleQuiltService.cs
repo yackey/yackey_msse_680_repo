@@ -12,6 +12,7 @@ namespace SAYQuiltProject.services
 
         Order GetOrder(string sQuiltName);
         IEnumerable<OrderHistory> GetOrderHistory(int nOrderId);
+        bool DeleteOrder(int nOrderId);
 
         //IUnitOfWork GetInformationStoreUow();
         //IRepository<Order> GetOrderInformationStore();
