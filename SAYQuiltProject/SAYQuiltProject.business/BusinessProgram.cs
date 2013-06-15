@@ -221,9 +221,15 @@ namespace SAYQuiltProject.business
                 orderHistory.EndDate = "05/31/2013";
                 orderHistory.Comments = "Delays in getting supplies";
                 orderHistory.Phase = "Construction";
-
                 order.OrderHistories.Add(orderHistory);
-                db.OrderHistories.Add(orderHistory);
+                //
+                var orderHistory2 = new OrderHistory();
+                orderHistory2.BeginDate = "6/16/2013";
+                orderHistory2.EndDate = "6/16/2013";
+                orderHistory2.Comments = "No longer interested";
+                orderHistory2.Phase = "Cancelled";
+
+                db.OrderHistories.Add(orderHistory2);
                 //
                 var awd = new Award();
                 awd.AwardingBody = "Hancock Fabric";

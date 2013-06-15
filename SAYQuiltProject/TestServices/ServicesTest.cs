@@ -40,31 +40,37 @@ namespace TestServices
             Assert.IsTrue(nItemCount >= 0);
         }
 
-
         [Test]
-        public void ServiceRepoViaUow()
+        public void ServiceExceptionNoService()
+        {
+            bool bCaught = false;
+            ISimpleQuiltService simpleQuiltSvc = null;
+            CServiceByNameFactory factory = CServiceByNameFactory.GetInstance();
+            try
+            {
+                simpleQuiltSvc = (ISimpleQuiltService) factory.GetService("ISimpleQuiltServiceNoWay");
+            }
+            catch (Exception e)
+            {
+                bCaught = true;
+            }
+            Assert.IsTrue(bCaught);
+        }
+
+        //[Test]
+        public void ServiceViaAppConfigUow()
         {
             SetupServicesTest();
 
             using (QulltContext context = new QulltContext())
             {
-                string[] includes = { "" };
-                //
-                ObjectContext oc = ((IObjectContextAdapter)context).ObjectContext;
-
-                //////////////////////////////////////////////////
-                // Repository via unit of work
-                //////////////////////////////////////////////////
-                UnitOfWork uow = new UnitOfWork(oc);
-                OrderRepository orderRepoUow = (OrderRepository)uow.Orders;
-                // Get all orders.
-                int items = 0;
-                IEnumerable<Order> olUow = orderRepoUow.GetAll(includes);
-                foreach (var item in olUow)
-                {
-                    items++;
-                }
-                Assert.IsTrue(items > 0);
+                CServiceByNameFactory factory = CServiceByNameFactory.GetInstance();
+                IUnitOfWork simpleUow = (IUnitOfWork)factory.GetService("IUnitOfWork");
+                IEnumerable<Order> objList = simpleUow.GetOrderList();
+                // the test is to fetch the service by name thru the app config file
+                //  if any object list comes back then that worked
+                int nItemCount = objList.Count();
+                Assert.IsTrue(nItemCount >= 0);
             }
         }
 

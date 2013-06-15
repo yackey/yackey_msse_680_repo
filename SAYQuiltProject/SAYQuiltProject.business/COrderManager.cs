@@ -7,9 +7,9 @@ using SAYQuiltProject.services;
 
 namespace SAYQuiltProject.business
 {
-    class COrderManager : CSimpleManager
+    public class COrderManager : CSimpleManager
     {
-        public void DeleteOrder(string sQuiltOrderToDelete)
+        public bool DeleteOrder(string sQuiltOrderToDelete)
         {
             // the business rule might be don't allow delete unless the order is cancelled
             ISimpleQuiltService simpleQuiltSvc = (ISimpleQuiltService) GetService("ISimpleQuiltService");
@@ -21,7 +21,7 @@ namespace SAYQuiltProject.business
             catch (Exception ex)
             {
                 Console.WriteLine("Exception: {0}", ex.Message);
-                return;
+                return false;
             }
 
             IEnumerable<OrderHistory> orderHistory = simpleQuiltSvc.GetOrderHistory(orderToDelete.OrderId);
@@ -43,6 +43,7 @@ namespace SAYQuiltProject.business
             {
                 bool bRet = simpleQuiltSvc.DeleteOrder(orderToDelete.OrderId);
             }
+            return true;
         }
     }
 }

@@ -19,10 +19,33 @@ namespace TestSimpleManager
         {
             if (bDbInitDone == false)
             {
-                TryDeleteCreate();
+                TryDeleteCreate(true);  // make cancelled history
+                bDbInitDone = true;     // any content is fine
             }
-
             TryManager();
+        }
+
+        [Test]
+        public void OrderManagerDeleteGood()
+        {
+            TryDeleteCreate(true);  // make a cancelled history
+            bool bRet = TryOrderManager();
+            Assert.IsTrue(bRet);
+        }
+
+        [Test]
+        public void OrderManagerDeleteException()
+        {
+            TryDeleteCreate(false);  // do not make a cancelled history
+            bool bRet = TryOrderManager();
+            Assert.IsTrue(bRet);
+        }
+
+        // use the manager to fetch data via service
+        private static bool TryOrderManager()
+        {
+            COrderManager om = new COrderManager();
+            return om.DeleteOrder("CreateQuiltTest Name");
         }
 
         // use the manager to fetch data via service
@@ -61,7 +84,7 @@ namespace TestSimpleManager
         }
 
         // setup db
-        private void TryDeleteCreate()
+        private void TryDeleteCreate(bool bMakeCancelledHistory)
         {
             using (var db = new QulltContext())
             {
@@ -159,6 +182,17 @@ namespace TestSimpleManager
 
                 order.OrderHistories.Add(orderHistory);
                 db.OrderHistories.Add(orderHistory);
+                //
+                if (bMakeCancelledHistory == true)
+                {
+                    var orderHistory2 = new OrderHistory();
+                    orderHistory2.BeginDate = "6/16/2013";
+                    orderHistory2.EndDate = "6/16/2013";
+                    orderHistory2.Comments = "No longer interested";
+                    orderHistory2.Phase = "Cancelled";
+
+                    db.OrderHistories.Add(orderHistory2);
+                }
                 //
                 var awd = new Award();
                 awd.AwardingBody = "Hancock Fabric";
