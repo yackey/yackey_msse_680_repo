@@ -12,6 +12,11 @@ namespace SAYQuiltProject.services
 
         Order GetOrder(string sQuiltName);
         IEnumerable<OrderHistory> GetOrderHistory(int nOrderId);
+        Recipient GetOrderRecipient(int nOrderId);
+
+        DesignBlock GetDesignBlock(int nBlkId);
+        IEnumerable<Award> GetAwards(int nQuiltId);
+
         bool DeleteOrder(int nOrderId);
 
         //IUnitOfWork GetInformationStoreUow();
@@ -25,6 +30,8 @@ namespace SAYQuiltProject.services
         IEnumerable<BOM> GetBomList();
         IEnumerable<OrderHistory> GetOrderHistoryList();
         IEnumerable<DesignBlock> GetDesignBlockList();
+
+        void SetupDb(bool bMakeCancelledHistory);
 
     }
 }

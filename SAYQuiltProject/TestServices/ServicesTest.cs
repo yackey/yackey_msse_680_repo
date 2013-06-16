@@ -196,7 +196,7 @@ namespace TestServices
                 var rec_type = "Individual";
                 // Design Block
                 var dblock_desc = "sunflower";
-                var dblock_genesis = "CreateQuiltTest Name";
+                var dblock_genesis = "Block of the Month Club";
                 //
                 var order = new Order { Description = order_desc, StartDate = order_start, EndDate = order_end };
                 var quilt = new Quilt { Name = quilt_name, Description = quilt_desc };
