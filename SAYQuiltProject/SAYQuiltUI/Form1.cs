@@ -15,20 +15,57 @@ namespace SAYQuiltUI
     public partial class Form1 : Form
     {
         private bool bIsDbSetup = false;
+        private COrderManager om = null;
+        private CSimpleQuiltManager qm = null;
+
         public Form1()
         {
             InitializeComponent();
+            COrderManager om = new COrderManager();
+            CSimpleQuiltManager qm = new CSimpleQuiltManager();
+            if (bIsDbSetup == false)
+            {
+                om.SetupDb(false);
+                bIsDbSetup = true;
+            }
+            // quilts
+            IEnumerable<Quilt> quiltEnum = qm.GetQuilts();
+            List<Quilt> quiltList = quiltEnum.ToList();
+            if (quiltList.Count > 0)
+            {
+                Quilt qFirst = quiltList.First();
+                tbQuiltName.Text = qFirst.Name;
+            }
         }
 
+        private void SetQuiltProjectNames()
+        {
+            
+        }
         private void btnGetQuiltInfo_Click(object sender, EventArgs e)
         {
+
             COrderManager om = new COrderManager();
+            CSimpleQuiltManager qm = new CSimpleQuiltManager();
+
             if (bIsDbSetup == false)
             {
                 om.SetupDb(false);
                 bIsDbSetup = true;
             }
 
+#if OLDWAY
+            // quilts
+            IEnumerable<Quilt> quiltEnum = qm.GetQuilts();
+            List<Quilt> quiltList = quiltEnum.ToList();
+            if (quiltList.Count > 0)
+            {
+                Quilt qFirst = quiltList.First();
+                tbQuiltName.Text = qFirst.Name;
+            }
+#endif
+
+            // the above needs to populate a combo box
             Quilt q = new Quilt();
             q.Name = tbQuiltName.Text;
 

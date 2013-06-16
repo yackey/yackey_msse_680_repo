@@ -62,9 +62,9 @@
             // 
             this.tbQuiltName.Location = new System.Drawing.Point(35, 53);
             this.tbQuiltName.Name = "tbQuiltName";
+            this.tbQuiltName.ReadOnly = true;
             this.tbQuiltName.Size = new System.Drawing.Size(161, 22);
             this.tbQuiltName.TabIndex = 0;
-            this.tbQuiltName.Text = "CreateQuiltTest Name";
             // 
             // lblQuiltNmae
             // 
@@ -314,7 +314,7 @@
             this.Controls.Add(this.lblQuiltNmae);
             this.Controls.Add(this.tbQuiltName);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Display Quilt Project Information";
             this.ResumeLayout(false);
             this.PerformLayout();
 
