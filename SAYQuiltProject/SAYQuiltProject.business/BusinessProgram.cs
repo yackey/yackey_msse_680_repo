@@ -28,7 +28,10 @@ namespace SAYQuiltProject.business
         private static void TryOrderManager()
         {
             COrderManager om = new COrderManager();
-            om.DeleteOrder("CreateQuiltTest Name");
+            //om.DeleteOrder("CreateQuiltTest Name");
+            Quilt q = new Quilt();
+            q.Name = "CreateQuiltTest Name";
+            Order orderFromQuilt = om.GetOrderFromQuilt(q);
         }
 
         private static void TryManager()

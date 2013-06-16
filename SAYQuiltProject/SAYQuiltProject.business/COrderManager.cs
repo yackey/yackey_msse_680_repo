@@ -9,6 +9,22 @@ namespace SAYQuiltProject.business
 {
     public class COrderManager : CSimpleManager
     {
+        public Order GetOrderFromQuilt(Quilt q)
+        {
+            // the business rule might be don't allow delete unless the order is cancelled
+            ISimpleQuiltService simpleQuiltSvc = (ISimpleQuiltService)GetService("ISimpleQuiltService");
+            Order orderFromQuilt = null;
+            try
+            {
+                orderFromQuilt = simpleQuiltSvc.GetOrder(q.Name);
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Exception: {0}", ex.Message);
+            }
+            return orderFromQuilt;
+        }
+
         public bool DeleteOrder(string sQuiltOrderToDelete)
         {
             // the business rule might be don't allow delete unless the order is cancelled
@@ -20,7 +36,7 @@ namespace SAYQuiltProject.business
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception: {0}", ex.Message);
+                //Console.WriteLine("Exception: {0}", ex.Message);
                 return false;
             }
 
@@ -37,7 +53,7 @@ namespace SAYQuiltProject.business
             }
             if (bIsCancelled == false)
             {
-                Console.WriteLine("The order has not been cancelled and cannot be deleted.");
+                //Console.WriteLine("The order has not been cancelled and cannot be deleted.");
             }
             else
             {
