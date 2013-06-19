@@ -14,105 +14,97 @@ namespace SAYQuiltUI
 {
     public partial class Form1 : Form
     {
-        private bool bIsDbSetup = false;
-        private COrderManager om = null;
-        private CSimpleQuiltManager qm = null;
+        private bool bIsChildRunning = false;
 
         public Form1()
         {
             InitializeComponent();
-            COrderManager om = new COrderManager();
-            CSimpleQuiltManager qm = new CSimpleQuiltManager();
-            if (bIsDbSetup == false)
-            {
-                om.SetupDb(false);
-                bIsDbSetup = true;
-            }
-            // quilts
-            IEnumerable<Quilt> quiltEnum = qm.GetQuilts();
-            List<Quilt> quiltList = quiltEnum.ToList();
-            if (quiltList.Count > 0)
-            {
-                Quilt qFirst = quiltList.First();
-                tbQuiltName.Text = qFirst.Name;
-            }
         }
 
-        private void SetQuiltProjectNames()
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
-        private void btnGetQuiltInfo_Click(object sender, EventArgs e)
+
+        public void SetIsChildRunning(bool bIsRunning)
+        {
+            bIsChildRunning = bIsRunning;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
-            COrderManager om = new COrderManager();
-            CSimpleQuiltManager qm = new CSimpleQuiltManager();
+        }
 
-            if (bIsDbSetup == false)
+        private void toolStripLabel5_Click(object sender, EventArgs e)
+        {
+            // exit the application
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void toolStripModify_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Todo.");
+            return;
+        }
+
+        private void toolStripDelete_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Todo.");
+            return;
+        }
+
+        private void toolStripCreate_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Todo.");
+            return;
+        }
+
+        private void toolStripDisplay_Click(object sender, EventArgs e)
+        {
+            doDisplayAction(sender, e);
+        }
+
+        private void doDisplayAction(object sender, EventArgs e)
+        {
+            if (bIsChildRunning == true)
             {
-                om.SetupDb(false);
-                bIsDbSetup = true;
+                MessageBox.Show("Only one activity permitted.");
+                return;
             }
 
-#if OLDWAY
-            // quilts
-            IEnumerable<Quilt> quiltEnum = qm.GetQuilts();
-            List<Quilt> quiltList = quiltEnum.ToList();
-            if (quiltList.Count > 0)
-            {
-                Quilt qFirst = quiltList.First();
-                tbQuiltName.Text = qFirst.Name;
-            }
-#endif
+            FormDisplay child = new FormDisplay(this);
+            child.Show();
+            bIsChildRunning = true;
+        }
 
-            // the above needs to populate a combo box
-            Quilt q = new Quilt();
-            q.Name = tbQuiltName.Text;
+        private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            // exit the application
+            System.Windows.Forms.Application.Exit();
+        }
 
-            // order
-            Order orderFromQuilt = om.GetOrderFromQuilt(q);
-            tbOrderStart.Text = orderFromQuilt.StartDate;
-            tbOrderEnd.Text = orderFromQuilt.EndDate;
-            tbOrderDescription.Text = orderFromQuilt.Description;
+        private void displayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            doDisplayAction(sender, e);
+        }
 
-            // we'll need this
-            int orderId = orderFromQuilt.OrderId;
-            int quiltId = om.GetQuiltIdFromQuiltName(tbQuiltName.Text);
+        private void createToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Todo.");
+            return;
+        }
 
-            // histories
-            IEnumerable<OrderHistory> enumOrderHistory = om.GetOrderHistory(orderId);
-            List<OrderHistory> listOrderHistory = enumOrderHistory.ToList();
-            if (listOrderHistory.Count > 0)
-            {
-                OrderHistory oh = listOrderHistory.Last();
-                tbPhase.Text = oh.Phase;
-                tbPhaseComments.Text = oh.Comments;
-                tbPhaseStart.Text = oh.BeginDate;
-            }
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Todo.");
+            return;
+        }
 
-            // recipient
-            Recipient r = om.GetOrderRecipient(orderId);
-            tbRecipientAddr1.Text = r.Address1;
-            tbRecipientAddr2.Text = r.Address2;
-            tbRecipientFirstName.Text = r.FirstName;
-            tbRecipientLastName.Text = r.LastName;
-
-            // design block
-            DesignBlock blk = om.GetDesignBlock(quiltId);
-            tbDesignBlockDesc.Text = blk.Description;
-            tbDesignBlockGenesis.Text = blk.Genesis;
-
-            // awards
-            // histories
-            IEnumerable<Award> enumAwards = om.GetAwards(quiltId);
-            List<Award> listAwards = enumAwards.ToList();
-            if (listAwards.Count > 0)
-            {
-                Award a = listAwards.Last();
-                tbAwardBody.Text = a.AwardingBody;
-                tbAwardDate.Text = a.DateOfAward;
-                tbAwardDesc.Text = a.Description;
-            }
+        private void modifyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Todo.");
+            return;
         }
     }
 }
