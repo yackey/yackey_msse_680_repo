@@ -37,6 +37,9 @@ namespace SAYQuiltUI
             {
                 cbQuiltNames.Items.Add(item.Name);
             }
+            SetupOrderHistory();
+            SetupAwards();
+            SetupBoms();
         }
 
         private void btnGetQuiltInfo_Click_1(object sender, EventArgs e)
@@ -83,13 +86,7 @@ namespace SAYQuiltUI
             // histories
             IEnumerable<OrderHistory> enumOrderHistory = om.GetOrderHistory(orderId);
             List<OrderHistory> listOrderHistory = enumOrderHistory.ToList();
-            if (listOrderHistory.Count > 0)
-            {
-                OrderHistory oh = listOrderHistory.Last();
-                tbPhase.Text = oh.Phase;
-                tbPhaseComments.Text = oh.Comments;
-                tbPhaseStart.Text = oh.BeginDate;
-            }
+            AddItemsToOrderHistory(listOrderHistory);
 
             // recipient
             Recipient r = om.GetOrderRecipient(orderId);
@@ -103,16 +100,128 @@ namespace SAYQuiltUI
             tbDesignBlockDesc.Text = blk.Description;
             tbDesignBlockGenesis.Text = blk.Genesis;
 
+            // boms
+            IEnumerable<BOM> enumBoms = om.GetBOM(quiltId);
+            List<BOM> listBoms = enumBoms.ToList();
+            AddItemsToBoms(listBoms);
+
             // awards
-            // histories
             IEnumerable<Award> enumAwards = om.GetAwards(quiltId);
             List<Award> listAwards = enumAwards.ToList();
-            if (listAwards.Count > 0)
+            AddItemsToAwards(listAwards);
+        }
+
+        private void AddItemsToOrderHistory(List<OrderHistory> listOrderHistory)
+        {
+            foreach (var item in listOrderHistory)
             {
-                Award a = listAwards.Last();
-                tbAwardBody.Text = a.AwardingBody;
-                tbAwardDate.Text = a.DateOfAward;
-                tbAwardDesc.Text = a.Description;
+                ListViewItem listviewitem = new ListViewItem(item.Phase);
+                listviewitem.SubItems.Add(item.BeginDate);
+                listviewitem.SubItems.Add(item.EndDate);
+                this.listView1.Items.Add(listviewitem);
+            }
+        }
+
+        private void SetupOrderHistory()
+        {
+            ColumnHeader columnheader;		// Used for creating column headers.
+
+            // Ensure that the view is set to show details.
+            listView1.View = View.Details;
+
+            // Create some column headers for the data. 
+            columnheader = new ColumnHeader();
+            columnheader.Text = "Phase";
+            this.listView1.Columns.Add(columnheader);
+
+            columnheader = new ColumnHeader();
+            columnheader.Text = "Start Date";
+            this.listView1.Columns.Add(columnheader);
+
+            columnheader = new ColumnHeader();
+            columnheader.Text = "End Date";
+            this.listView1.Columns.Add(columnheader);
+
+            // Loop through and size each column header to fit the column header text.
+            foreach (ColumnHeader ch in this.listView1.Columns)
+            {
+                ch.Width = -2;
+            }
+        }
+
+        private void AddItemsToAwards(List<Award> listAward)
+        {
+            foreach (var item in listAward)
+            {
+                ListViewItem listviewitem = new ListViewItem(item.AwardingBody);
+                listviewitem.SubItems.Add(item.DateOfAward);
+                listviewitem.SubItems.Add(item.Description);
+                this.listView2.Items.Add(listviewitem);
+            }
+        }
+
+        private void SetupAwards()
+        {
+            ColumnHeader columnheader;		// Used for creating column headers.
+
+            // Ensure that the view is set to show details.
+            listView2.View = View.Details;
+
+            // Create some column headers for the data. 
+            columnheader = new ColumnHeader();
+            columnheader.Text = "Awarding Body";
+            this.listView2.Columns.Add(columnheader);
+
+            columnheader = new ColumnHeader();
+            columnheader.Text = "Date";
+            this.listView2.Columns.Add(columnheader);
+
+            columnheader = new ColumnHeader();
+            columnheader.Text = "Description";
+            this.listView2.Columns.Add(columnheader);
+
+            // Loop through and size each column header to fit the column header text.
+            foreach (ColumnHeader ch in this.listView2.Columns)
+            {
+                ch.Width = -2;
+            }
+        }
+
+        private void AddItemsToBoms(List<BOM> listBOM)
+        {
+            foreach (var item in listBOM)
+            {
+                ListViewItem listviewitem = new ListViewItem(item.TypeOfItem);
+                listviewitem.SubItems.Add(item.Count);
+                listviewitem.SubItems.Add(item.Description);
+                this.listView3.Items.Add(listviewitem);
+            }
+        }
+
+        private void SetupBoms()
+        {
+            ColumnHeader columnheader;		// Used for creating column headers.
+
+            // Ensure that the view is set to show details.
+            listView3.View = View.Details;
+
+            // Create some column headers for the data. 
+            columnheader = new ColumnHeader();
+            columnheader.Text = "Type of Item";
+            this.listView3.Columns.Add(columnheader);
+
+            columnheader = new ColumnHeader();
+            columnheader.Text = "Count";
+            this.listView3.Columns.Add(columnheader);
+
+            columnheader = new ColumnHeader();
+            columnheader.Text = "Description";
+            this.listView3.Columns.Add(columnheader);
+
+            // Loop through and size each column header to fit the column header text.
+            foreach (ColumnHeader ch in this.listView3.Columns)
+            {
+                ch.Width = -2;
             }
         }
 
@@ -131,5 +240,11 @@ namespace SAYQuiltUI
         {
             bool bSelected = true;
         }
+
+        private void tbDesignBlockDesc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

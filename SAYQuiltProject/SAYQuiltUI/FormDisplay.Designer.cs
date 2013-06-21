@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblAward = new System.Windows.Forms.Label();
-            this.tbAwardDesc = new System.Windows.Forms.TextBox();
-            this.tbAwardDate = new System.Windows.Forms.TextBox();
-            this.tbAwardBody = new System.Windows.Forms.TextBox();
             this.tbDesignBlockGenesis = new System.Windows.Forms.TextBox();
             this.tbDesignBlockDesc = new System.Windows.Forms.TextBox();
             this.lblDesignBlock = new System.Windows.Forms.Label();
@@ -43,12 +39,6 @@
             this.tbRecipientFirstName = new System.Windows.Forms.TextBox();
             this.projectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblRecipientNameFirst = new System.Windows.Forms.Label();
-            this.lblPhaseComments = new System.Windows.Forms.Label();
-            this.tbPhaseComments = new System.Windows.Forms.TextBox();
-            this.tbPhase = new System.Windows.Forms.TextBox();
-            this.lblOrderPhase = new System.Windows.Forms.Label();
-            this.lblPhaseStart = new System.Windows.Forms.Label();
-            this.tbPhaseStart = new System.Windows.Forms.TextBox();
             this.lblOrderDescription = new System.Windows.Forms.Label();
             this.tbOrderDescription = new System.Windows.Forms.TextBox();
             this.lblOrderEnd = new System.Windows.Forms.Label();
@@ -59,64 +49,41 @@
             this.lblQuiltNmae = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cbQuiltNames = new System.Windows.Forms.ComboBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.lblOrderHistory = new System.Windows.Forms.Label();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.lblAwards = new System.Windows.Forms.Label();
+            this.listView3 = new System.Windows.Forms.ListView();
+            this.lbl2BOMs = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(102, 24);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // lblAward
-            // 
-            this.lblAward.AutoSize = true;
-            this.lblAward.Location = new System.Drawing.Point(39, 352);
-            this.lblAward.Name = "lblAward";
-            this.lblAward.Size = new System.Drawing.Size(47, 17);
-            this.lblAward.TabIndex = 59;
-            this.lblAward.Text = "Award";
-            // 
-            // tbAwardDesc
-            // 
-            this.tbAwardDesc.Location = new System.Drawing.Point(282, 372);
-            this.tbAwardDesc.Name = "tbAwardDesc";
-            this.tbAwardDesc.Size = new System.Drawing.Size(154, 22);
-            this.tbAwardDesc.TabIndex = 58;
-            // 
-            // tbAwardDate
-            // 
-            this.tbAwardDate.Location = new System.Drawing.Point(160, 372);
-            this.tbAwardDate.Name = "tbAwardDate";
-            this.tbAwardDate.Size = new System.Drawing.Size(100, 22);
-            this.tbAwardDate.TabIndex = 57;
-            // 
-            // tbAwardBody
-            // 
-            this.tbAwardBody.Location = new System.Drawing.Point(35, 372);
-            this.tbAwardBody.Name = "tbAwardBody";
-            this.tbAwardBody.Size = new System.Drawing.Size(100, 22);
-            this.tbAwardBody.TabIndex = 56;
-            // 
             // tbDesignBlockGenesis
             // 
-            this.tbDesignBlockGenesis.Location = new System.Drawing.Point(193, 303);
+            this.tbDesignBlockGenesis.Location = new System.Drawing.Point(151, 201);
             this.tbDesignBlockGenesis.Name = "tbDesignBlockGenesis";
-            this.tbDesignBlockGenesis.Size = new System.Drawing.Size(162, 22);
+            this.tbDesignBlockGenesis.Size = new System.Drawing.Size(183, 22);
             this.tbDesignBlockGenesis.TabIndex = 55;
             // 
             // tbDesignBlockDesc
             // 
-            this.tbDesignBlockDesc.Location = new System.Drawing.Point(35, 303);
+            this.tbDesignBlockDesc.Location = new System.Drawing.Point(14, 201);
             this.tbDesignBlockDesc.Name = "tbDesignBlockDesc";
             this.tbDesignBlockDesc.Size = new System.Drawing.Size(120, 22);
             this.tbDesignBlockDesc.TabIndex = 54;
+            this.tbDesignBlockDesc.TextChanged += new System.EventHandler(this.tbDesignBlockDesc_TextChanged);
             // 
             // lblDesignBlock
             // 
             this.lblDesignBlock.AutoSize = true;
-            this.lblDesignBlock.Location = new System.Drawing.Point(35, 283);
+            this.lblDesignBlock.Location = new System.Drawing.Point(22, 181);
             this.lblDesignBlock.Name = "lblDesignBlock";
             this.lblDesignBlock.Size = new System.Drawing.Size(90, 17);
             this.lblDesignBlock.TabIndex = 53;
@@ -125,7 +92,7 @@
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(303, 219);
+            this.lblAddress.Location = new System.Drawing.Point(253, 116);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(60, 17);
             this.lblAddress.TabIndex = 52;
@@ -133,28 +100,28 @@
             // 
             // tbRecipientAddr2
             // 
-            this.tbRecipientAddr2.Location = new System.Drawing.Point(403, 239);
+            this.tbRecipientAddr2.Location = new System.Drawing.Point(353, 136);
             this.tbRecipientAddr2.Name = "tbRecipientAddr2";
             this.tbRecipientAddr2.Size = new System.Drawing.Size(100, 22);
             this.tbRecipientAddr2.TabIndex = 51;
             // 
             // tbRecipientAddr1
             // 
-            this.tbRecipientAddr1.Location = new System.Drawing.Point(292, 239);
+            this.tbRecipientAddr1.Location = new System.Drawing.Point(242, 136);
             this.tbRecipientAddr1.Name = "tbRecipientAddr1";
             this.tbRecipientAddr1.Size = new System.Drawing.Size(100, 22);
             this.tbRecipientAddr1.TabIndex = 50;
             // 
             // tbRecipientLastName
             // 
-            this.tbRecipientLastName.Location = new System.Drawing.Point(141, 239);
+            this.tbRecipientLastName.Location = new System.Drawing.Point(120, 136);
             this.tbRecipientLastName.Name = "tbRecipientLastName";
             this.tbRecipientLastName.Size = new System.Drawing.Size(100, 22);
             this.tbRecipientLastName.TabIndex = 49;
             // 
             // tbRecipientFirstName
             // 
-            this.tbRecipientFirstName.Location = new System.Drawing.Point(35, 239);
+            this.tbRecipientFirstName.Location = new System.Drawing.Point(14, 136);
             this.tbRecipientFirstName.Name = "tbRecipientFirstName";
             this.tbRecipientFirstName.Size = new System.Drawing.Size(100, 22);
             this.tbRecipientFirstName.TabIndex = 48;
@@ -170,64 +137,16 @@
             // lblRecipientNameFirst
             // 
             this.lblRecipientNameFirst.AutoSize = true;
-            this.lblRecipientNameFirst.Location = new System.Drawing.Point(32, 219);
+            this.lblRecipientNameFirst.Location = new System.Drawing.Point(17, 116);
             this.lblRecipientNameFirst.Name = "lblRecipientNameFirst";
-            this.lblRecipientNameFirst.Size = new System.Drawing.Size(45, 17);
+            this.lblRecipientNameFirst.Size = new System.Drawing.Size(108, 17);
             this.lblRecipientNameFirst.TabIndex = 47;
-            this.lblRecipientNameFirst.Text = "Name";
-            // 
-            // lblPhaseComments
-            // 
-            this.lblPhaseComments.AutoSize = true;
-            this.lblPhaseComments.Location = new System.Drawing.Point(553, 159);
-            this.lblPhaseComments.Name = "lblPhaseComments";
-            this.lblPhaseComments.Size = new System.Drawing.Size(118, 17);
-            this.lblPhaseComments.TabIndex = 46;
-            this.lblPhaseComments.Text = "Phase Comments";
-            // 
-            // tbPhaseComments
-            // 
-            this.tbPhaseComments.Location = new System.Drawing.Point(516, 178);
-            this.tbPhaseComments.Name = "tbPhaseComments";
-            this.tbPhaseComments.Size = new System.Drawing.Size(214, 22);
-            this.tbPhaseComments.TabIndex = 45;
-            // 
-            // tbPhase
-            // 
-            this.tbPhase.Location = new System.Drawing.Point(255, 179);
-            this.tbPhase.Name = "tbPhase";
-            this.tbPhase.Size = new System.Drawing.Size(100, 22);
-            this.tbPhase.TabIndex = 44;
-            // 
-            // lblOrderPhase
-            // 
-            this.lblOrderPhase.AutoSize = true;
-            this.lblOrderPhase.Location = new System.Drawing.Point(270, 159);
-            this.lblOrderPhase.Name = "lblOrderPhase";
-            this.lblOrderPhase.Size = new System.Drawing.Size(48, 17);
-            this.lblOrderPhase.TabIndex = 43;
-            this.lblOrderPhase.Text = "Phase";
-            // 
-            // lblPhaseStart
-            // 
-            this.lblPhaseStart.AutoSize = true;
-            this.lblPhaseStart.Location = new System.Drawing.Point(400, 159);
-            this.lblPhaseStart.Name = "lblPhaseStart";
-            this.lblPhaseStart.Size = new System.Drawing.Size(82, 17);
-            this.lblPhaseStart.TabIndex = 42;
-            this.lblPhaseStart.Text = "Phase Start";
-            // 
-            // tbPhaseStart
-            // 
-            this.tbPhaseStart.Location = new System.Drawing.Point(385, 179);
-            this.tbPhaseStart.Name = "tbPhaseStart";
-            this.tbPhaseStart.Size = new System.Drawing.Size(100, 22);
-            this.tbPhaseStart.TabIndex = 41;
+            this.lblRecipientNameFirst.Text = "Recipient Name";
             // 
             // lblOrderDescription
             // 
             this.lblOrderDescription.AutoSize = true;
-            this.lblOrderDescription.Location = new System.Drawing.Point(550, 106);
+            this.lblOrderDescription.Location = new System.Drawing.Point(589, 47);
             this.lblOrderDescription.Name = "lblOrderDescription";
             this.lblOrderDescription.Size = new System.Drawing.Size(120, 17);
             this.lblOrderDescription.TabIndex = 40;
@@ -235,7 +154,7 @@
             // 
             // tbOrderDescription
             // 
-            this.tbOrderDescription.Location = new System.Drawing.Point(516, 127);
+            this.tbOrderDescription.Location = new System.Drawing.Point(555, 68);
             this.tbOrderDescription.Name = "tbOrderDescription";
             this.tbOrderDescription.Size = new System.Drawing.Size(214, 22);
             this.tbOrderDescription.TabIndex = 39;
@@ -243,7 +162,7 @@
             // lblOrderEnd
             // 
             this.lblOrderEnd.AutoSize = true;
-            this.lblOrderEnd.Location = new System.Drawing.Point(399, 106);
+            this.lblOrderEnd.Location = new System.Drawing.Point(438, 47);
             this.lblOrderEnd.Name = "lblOrderEnd";
             this.lblOrderEnd.Size = new System.Drawing.Size(74, 17);
             this.lblOrderEnd.TabIndex = 38;
@@ -251,7 +170,7 @@
             // 
             // tbOrderEnd
             // 
-            this.tbOrderEnd.Location = new System.Drawing.Point(385, 126);
+            this.tbOrderEnd.Location = new System.Drawing.Point(424, 67);
             this.tbOrderEnd.Name = "tbOrderEnd";
             this.tbOrderEnd.Size = new System.Drawing.Size(100, 22);
             this.tbOrderEnd.TabIndex = 37;
@@ -259,7 +178,7 @@
             // lblOrderStart
             // 
             this.lblOrderStart.AutoSize = true;
-            this.lblOrderStart.Location = new System.Drawing.Point(270, 106);
+            this.lblOrderStart.Location = new System.Drawing.Point(309, 47);
             this.lblOrderStart.Name = "lblOrderStart";
             this.lblOrderStart.Size = new System.Drawing.Size(79, 17);
             this.lblOrderStart.TabIndex = 36;
@@ -267,14 +186,14 @@
             // 
             // tbOrderStart
             // 
-            this.tbOrderStart.Location = new System.Drawing.Point(255, 126);
+            this.tbOrderStart.Location = new System.Drawing.Point(294, 67);
             this.tbOrderStart.Name = "tbOrderStart";
             this.tbOrderStart.Size = new System.Drawing.Size(100, 22);
             this.tbOrderStart.TabIndex = 35;
             // 
             // btnGetQuiltInfo
             // 
-            this.btnGetQuiltInfo.Location = new System.Drawing.Point(361, 430);
+            this.btnGetQuiltInfo.Location = new System.Drawing.Point(341, 415);
             this.btnGetQuiltInfo.Name = "btnGetQuiltInfo";
             this.btnGetQuiltInfo.Size = new System.Drawing.Size(75, 23);
             this.btnGetQuiltInfo.TabIndex = 34;
@@ -285,7 +204,7 @@
             // lblQuiltNmae
             // 
             this.lblQuiltNmae.AutoSize = true;
-            this.lblQuiltNmae.Location = new System.Drawing.Point(43, 107);
+            this.lblQuiltNmae.Location = new System.Drawing.Point(22, 46);
             this.lblQuiltNmae.Name = "lblQuiltNmae";
             this.lblQuiltNmae.Size = new System.Drawing.Size(74, 17);
             this.lblQuiltNmae.TabIndex = 33;
@@ -304,22 +223,75 @@
             // cbQuiltNames
             // 
             this.cbQuiltNames.FormattingEnabled = true;
-            this.cbQuiltNames.Location = new System.Drawing.Point(35, 127);
+            this.cbQuiltNames.Location = new System.Drawing.Point(14, 66);
             this.cbQuiltNames.Name = "cbQuiltNames";
             this.cbQuiltNames.Size = new System.Drawing.Size(121, 24);
             this.cbQuiltNames.TabIndex = 61;
             this.cbQuiltNames.SelectedIndexChanged += new System.EventHandler(this.cbQuiltNames_SelectedIndexChanged);
             // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(507, 126);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(262, 97);
+            this.listView1.TabIndex = 62;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // lblOrderHistory
+            // 
+            this.lblOrderHistory.AutoSize = true;
+            this.lblOrderHistory.Location = new System.Drawing.Point(610, 106);
+            this.lblOrderHistory.Name = "lblOrderHistory";
+            this.lblOrderHistory.Size = new System.Drawing.Size(93, 17);
+            this.lblOrderHistory.TabIndex = 63;
+            this.lblOrderHistory.Text = "Order History";
+            // 
+            // listView2
+            // 
+            this.listView2.Location = new System.Drawing.Point(449, 275);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(320, 97);
+            this.listView2.TabIndex = 64;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            // 
+            // lblAwards
+            // 
+            this.lblAwards.AutoSize = true;
+            this.lblAwards.Location = new System.Drawing.Point(528, 255);
+            this.lblAwards.Name = "lblAwards";
+            this.lblAwards.Size = new System.Drawing.Size(54, 17);
+            this.lblAwards.TabIndex = 65;
+            this.lblAwards.Text = "Awards";
+            // 
+            // listView3
+            // 
+            this.listView3.Location = new System.Drawing.Point(12, 275);
+            this.listView3.Name = "listView3";
+            this.listView3.Size = new System.Drawing.Size(320, 97);
+            this.listView3.TabIndex = 66;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            // 
+            // lbl2BOMs
+            // 
+            this.lbl2BOMs.AutoSize = true;
+            this.lbl2BOMs.Location = new System.Drawing.Point(53, 255);
+            this.lbl2BOMs.Name = "lbl2BOMs";
+            this.lbl2BOMs.Size = new System.Drawing.Size(87, 17);
+            this.lbl2BOMs.TabIndex = 67;
+            this.lbl2BOMs.Text = "Components";
+            // 
             // FormDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(793, 504);
+            this.ClientSize = new System.Drawing.Size(793, 453);
+            this.Controls.Add(this.lbl2BOMs);
+            this.Controls.Add(this.listView3);
+            this.Controls.Add(this.lblAwards);
+            this.Controls.Add(this.listView2);
+            this.Controls.Add(this.lblOrderHistory);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.cbQuiltNames);
-            this.Controls.Add(this.lblAward);
-            this.Controls.Add(this.tbAwardDesc);
-            this.Controls.Add(this.tbAwardDate);
-            this.Controls.Add(this.tbAwardBody);
             this.Controls.Add(this.tbDesignBlockGenesis);
             this.Controls.Add(this.tbDesignBlockDesc);
             this.Controls.Add(this.lblDesignBlock);
@@ -329,12 +301,6 @@
             this.Controls.Add(this.tbRecipientLastName);
             this.Controls.Add(this.tbRecipientFirstName);
             this.Controls.Add(this.lblRecipientNameFirst);
-            this.Controls.Add(this.lblPhaseComments);
-            this.Controls.Add(this.tbPhaseComments);
-            this.Controls.Add(this.tbPhase);
-            this.Controls.Add(this.lblOrderPhase);
-            this.Controls.Add(this.lblPhaseStart);
-            this.Controls.Add(this.tbPhaseStart);
             this.Controls.Add(this.lblOrderDescription);
             this.Controls.Add(this.tbOrderDescription);
             this.Controls.Add(this.lblOrderEnd);
@@ -357,10 +323,6 @@
         #endregion
 
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.Label lblAward;
-        private System.Windows.Forms.TextBox tbAwardDesc;
-        private System.Windows.Forms.TextBox tbAwardDate;
-        private System.Windows.Forms.TextBox tbAwardBody;
         private System.Windows.Forms.TextBox tbDesignBlockGenesis;
         private System.Windows.Forms.TextBox tbDesignBlockDesc;
         private System.Windows.Forms.Label lblDesignBlock;
@@ -371,12 +333,6 @@
         private System.Windows.Forms.TextBox tbRecipientFirstName;
         private System.Windows.Forms.ToolStripMenuItem projectsToolStripMenuItem;
         private System.Windows.Forms.Label lblRecipientNameFirst;
-        private System.Windows.Forms.Label lblPhaseComments;
-        private System.Windows.Forms.TextBox tbPhaseComments;
-        private System.Windows.Forms.TextBox tbPhase;
-        private System.Windows.Forms.Label lblOrderPhase;
-        private System.Windows.Forms.Label lblPhaseStart;
-        private System.Windows.Forms.TextBox tbPhaseStart;
         private System.Windows.Forms.Label lblOrderDescription;
         private System.Windows.Forms.TextBox tbOrderDescription;
         private System.Windows.Forms.Label lblOrderEnd;
@@ -387,5 +343,11 @@
         private System.Windows.Forms.Label lblQuiltNmae;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ComboBox cbQuiltNames;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label lblOrderHistory;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.Label lblAwards;
+        private System.Windows.Forms.ListView listView3;
+        private System.Windows.Forms.Label lbl2BOMs;
     }
 }

@@ -100,6 +100,18 @@ namespace SAYQuiltProject.services
             }
         }
 
+        public IEnumerable<BOM> GetBOM(int nQuiltId)
+        {
+            using (QulltContext db = new QulltContext())
+            {
+                var quilt = (from quilts in db.Quilts
+                             where quilts.QuiltId == nQuiltId
+                             select quilts).Single();
+
+                return quilt.BOMs;
+            }
+        }
+
         public DesignBlock GetDesignBlock(int nQuiltId)
         {
             using (QulltContext db = new QulltContext())

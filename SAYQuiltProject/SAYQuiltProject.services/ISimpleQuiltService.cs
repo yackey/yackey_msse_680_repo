@@ -16,6 +16,7 @@ namespace SAYQuiltProject.services
 
         DesignBlock GetDesignBlock(int nBlkId);
         IEnumerable<Award> GetAwards(int nQuiltId);
+        IEnumerable<BOM> GetBOM(int nQuiltId);
 
         bool DeleteOrder(int nOrderId);
 

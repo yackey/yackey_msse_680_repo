@@ -65,6 +65,21 @@ namespace SAYQuiltProject.business
             return orderHistory;
         }
 
+        public IEnumerable<BOM> GetBOM(int quiltId)
+        {
+            ISimpleQuiltService simpleQuiltSvc = (ISimpleQuiltService)GetService("ISimpleQuiltService");
+            IEnumerable<BOM> bom = null;
+            try
+            {
+                bom = simpleQuiltSvc.GetBOM(quiltId);
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Exception: {0}", ex.Message);
+            }
+            return bom;
+        }
+
         public IEnumerable<Award> GetAwards(int quiltId)
         {
             ISimpleQuiltService simpleQuiltSvc = (ISimpleQuiltService)GetService("ISimpleQuiltService");
