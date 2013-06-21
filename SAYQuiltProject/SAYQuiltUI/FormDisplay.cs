@@ -238,7 +238,8 @@ namespace SAYQuiltUI
 
         private void cbQuiltNames_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bool bSelected = true;
+            //bool bSelected = true;
+            //cbQuiltNames.SelectedIndex;
         }
 
         private void tbDesignBlockDesc_TextChanged(object sender, EventArgs e)

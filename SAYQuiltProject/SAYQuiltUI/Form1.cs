@@ -56,8 +56,20 @@ namespace SAYQuiltUI
 
         private void toolStripCreate_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Todo.");
-            return;
+            doCreateAction(sender, e);
+        }
+
+        private void doCreateAction(object sender, EventArgs e)
+        {
+            if (bIsChildRunning == true)
+            {
+                MessageBox.Show("Only one activity permitted.");
+                return;
+            }
+
+            FormCreate child = new FormCreate(this);
+            child.Show();
+            bIsChildRunning = true;
         }
 
         private void toolStripDisplay_Click(object sender, EventArgs e)
