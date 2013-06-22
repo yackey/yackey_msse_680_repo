@@ -18,6 +18,25 @@ namespace SAYQuiltProject.services
             return sAryNames;
         }
 
+        public bool CreateQuiltOrder(Order order, Quilt quilt, Recipient recipient, DesignBlock dblock)
+        {
+            using (var db = new QulltContext())
+            {
+                quilt.Order = order;
+                order.Quilt = quilt;
+                order.Recipient = recipient; 
+                quilt.DesignBlock = dblock;
+                //
+                db.Orders.Add(order);
+                db.Quilts.Add(quilt);
+                db.Recipients.Add(recipient);
+                db.DesignBlocks.Add(dblock);
+
+                db.SaveChanges();
+            }
+            return true;
+        }
+
         public Order GetOrder(string sQuiltName)
         {
             using (QulltContext context = new QulltContext())

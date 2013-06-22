@@ -311,7 +311,7 @@
             this.Controls.Add(this.lblQuiltNmae);
             this.Controls.Add(this.menuStrip1);
             this.Name = "FormDisplay";
-            this.Text = "FormDisplay";
+            this.Text = "Display Quilt Project Information";
             this.Load += new System.EventHandler(this.FormDisplay_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

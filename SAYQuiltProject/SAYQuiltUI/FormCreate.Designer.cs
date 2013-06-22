@@ -35,7 +35,7 @@
             this.lblQuiltName = new System.Windows.Forms.Label();
             this.tbQuiltDescription = new System.Windows.Forms.TextBox();
             this.lblQuiltDescription = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbOrderDescription = new System.Windows.Forms.TextBox();
             this.lblOrderDescription = new System.Windows.Forms.Label();
             this.tbOrderBeginDate = new System.Windows.Forms.TextBox();
             this.lblOrderBeginDate = new System.Windows.Forms.Label();
@@ -76,7 +76,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(102, 24);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -86,6 +86,7 @@
             this.tbQuiltName.Name = "tbQuiltName";
             this.tbQuiltName.Size = new System.Drawing.Size(149, 22);
             this.tbQuiltName.TabIndex = 1;
+            this.tbQuiltName.TextChanged += new System.EventHandler(this.tbQuiltName_TextChanged);
             // 
             // lblQuiltName
             // 
@@ -112,12 +113,12 @@
             this.lblQuiltDescription.TabIndex = 4;
             this.lblQuiltDescription.Text = "Quilt Description";
             // 
-            // textBox1
+            // tbOrderDescription
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 122);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(147, 22);
-            this.textBox1.TabIndex = 5;
+            this.tbOrderDescription.Location = new System.Drawing.Point(12, 122);
+            this.tbOrderDescription.Name = "tbOrderDescription";
+            this.tbOrderDescription.Size = new System.Drawing.Size(147, 22);
+            this.tbOrderDescription.TabIndex = 5;
             // 
             // lblOrderDescription
             // 
@@ -269,7 +270,7 @@
             this.Controls.Add(this.lblOrderBeginDate);
             this.Controls.Add(this.tbOrderBeginDate);
             this.Controls.Add(this.lblOrderDescription);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbOrderDescription);
             this.Controls.Add(this.lblQuiltDescription);
             this.Controls.Add(this.tbQuiltDescription);
             this.Controls.Add(this.lblQuiltName);
@@ -277,7 +278,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormCreate";
-            this.Text = "FormCreate";
+            this.Text = "Create Quilt Project";
             this.Load += new System.EventHandler(this.FormCreate_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -295,7 +296,7 @@
         private System.Windows.Forms.Label lblQuiltName;
         private System.Windows.Forms.TextBox tbQuiltDescription;
         private System.Windows.Forms.Label lblQuiltDescription;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbOrderDescription;
         private System.Windows.Forms.Label lblOrderDescription;
         private System.Windows.Forms.TextBox tbOrderBeginDate;
         private System.Windows.Forms.Label lblOrderBeginDate;

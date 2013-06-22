@@ -163,6 +163,25 @@ namespace SAYQuiltProject.business
             return true;
         }
 
+        // create quilt project/order entry
+        public bool CreateQuiltOrder(Order order, Quilt quilt, Recipient recipient, DesignBlock dblock)
+        {
+            ISimpleQuiltService simpleQuiltSvc = (ISimpleQuiltService)GetService("ISimpleQuiltService");
+            bool bRet = false;
+            try
+            {
+                bRet = simpleQuiltSvc.CreateQuiltOrder(order, quilt, recipient, dblock);
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Exception: {0}", ex.Message);
+                bRet = false;
+            }
+            return bRet;
+        }
+
+        //
+
         public void SetupDb(bool bMakeCancelledHistory)
         {
             try

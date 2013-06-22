@@ -40,6 +40,7 @@ namespace SAYQuiltUI
             SetupOrderHistory();
             SetupAwards();
             SetupBoms();
+
         }
 
         private void btnGetQuiltInfo_Click_1(object sender, EventArgs e)
