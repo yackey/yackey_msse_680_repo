@@ -15,12 +15,21 @@ namespace SAYQuiltUI
     public partial class FormCreate : Form
     {
         private Form1 f1 = null;
+        private string sValidationComments;
+        private List<Quilt> quiltList;
 
         public FormCreate(Form1 parent)
         {
             InitializeComponent();
             f1 = parent;
             this.MdiParent = parent;
+
+            COrderManager om = new COrderManager();
+            CSimpleQuiltManager qm = new CSimpleQuiltManager();
+            // quilts
+            IEnumerable<Quilt> quiltEnum = qm.GetQuilts();
+            quiltList = quiltEnum.ToList();
+
         }
 
         private void FormCreate_Load(object sender, EventArgs e)
@@ -39,10 +48,18 @@ namespace SAYQuiltUI
             bool bRet = CheckRequiredFields();
             if (bRet == false)
             {
-                MessageBox.Show("You did not enter all information.");
+                MessageBox.Show(sValidationComments);
                 return;
             }
             bRet = CreateProject();
+            if (bRet == true)
+            {
+                MessageBox.Show("That Worked !!");
+            }
+            else
+            {
+                MessageBox.Show("That Failed !!");
+            }
         }
 
         private bool CreateProject()
@@ -162,20 +179,48 @@ namespace SAYQuiltUI
             //
             COrderManager om = new COrderManager();
             bool bRet = om.CreateQuiltOrder(order, quilt, recipient, dblock, listOrderHistory, listAwards, listBom);
-            if (bRet == true)
-            {
-                MessageBox.Show("That Worked !!");                
-            }
-            else
-            {
-                MessageBox.Show("That Failed !!");
-            }
-
             return bRet;
         }
 
         private bool CheckRequiredFields()
         {
+            string sLowerTextBox = tbQuiltName.Text.ToLower();
+            foreach (var item in quiltList)
+            {
+                string sLowerListItem = item.Name.ToLower();
+                int iCmp = sLowerListItem.CompareTo(sLowerTextBox);
+                if (iCmp == 0)
+                {
+                    sValidationComments = "Quilt name already taken";
+                    return false;
+                }
+            }
+
+            if ((tbQuiltName.Text.Length == 0) || (tbQuiltDescription.Text.Length == 0))
+            {
+                sValidationComments = "Quilt items must be provided";
+                return false;
+            }
+
+            if ((tbRecipientFirstName.Text.Length == 0) || (tbRecipientLastName.Text.Length == 0) || 
+                (tbRecipientAddress1.Text.Length == 0) || (tbRecipientAddress2.Text.Length == 0))
+            {
+                sValidationComments = "Recipient items must be provided";
+                return false;
+            }
+
+            if ((tbOrderBeginDate.Text.Length == 0) || (tbOrderDescription.Text.Length == 0) ||(tbOrderEndDate.Text.Length == 0))
+            {
+                sValidationComments = "Order items must be provided";
+                return false;
+            }
+
+            if ((tbDesignBlockDesc.Text.Length == 0) || (tbDesignBlockGenesis.Text.Length == 0))
+            {
+                sValidationComments = "Design Block items must be provided";
+                return false;
+            }
+
             return true;
         }
 

@@ -225,7 +225,7 @@
             this.cbQuiltNames.FormattingEnabled = true;
             this.cbQuiltNames.Location = new System.Drawing.Point(14, 66);
             this.cbQuiltNames.Name = "cbQuiltNames";
-            this.cbQuiltNames.Size = new System.Drawing.Size(121, 24);
+            this.cbQuiltNames.Size = new System.Drawing.Size(206, 24);
             this.cbQuiltNames.TabIndex = 61;
             this.cbQuiltNames.SelectedIndexChanged += new System.EventHandler(this.cbQuiltNames_SelectedIndexChanged);
             // 

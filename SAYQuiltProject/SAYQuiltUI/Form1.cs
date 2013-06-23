@@ -115,14 +115,12 @@ namespace SAYQuiltUI
 
         private void createToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Todo.");
-            return;
+            doCreateAction(sender, e);
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Todo.");
-            return;
+            doDeleteAction(sender, e);
         }
 
         private void modifyToolStripMenuItem_Click(object sender, EventArgs e)
