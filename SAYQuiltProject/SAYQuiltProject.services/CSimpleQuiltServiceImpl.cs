@@ -18,7 +18,8 @@ namespace SAYQuiltProject.services
             return sAryNames;
         }
 
-        public bool CreateQuiltOrder(Order order, Quilt quilt, Recipient recipient, DesignBlock dblock)
+        public bool CreateQuiltOrder(Order order, Quilt quilt, Recipient recipient, DesignBlock dblock,
+            List<OrderHistory> listOh, List<Award> listAw, List<BOM> listBom)
         {
             using (var db = new QulltContext())
             {
@@ -31,6 +32,24 @@ namespace SAYQuiltProject.services
                 db.Quilts.Add(quilt);
                 db.Recipients.Add(recipient);
                 db.DesignBlocks.Add(dblock);
+
+                foreach (var item in listOh)
+                {
+                    order.OrderHistories.Add(item);
+                    db.OrderHistories.Add(item);
+                }
+
+                foreach (var item in listAw)
+                {
+                    quilt.Awards.Add(item);
+                    db.Awards.Add(item);
+                }
+
+                foreach (var item in listBom)
+                {
+                    quilt.BOMs.Add(item);
+                    db.BOMs.Add(item);
+                }
 
                 db.SaveChanges();
             }

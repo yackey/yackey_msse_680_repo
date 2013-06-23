@@ -20,7 +20,8 @@ namespace SAYQuiltProject.services
 
         bool DeleteOrder(int nOrderId);
 
-        bool CreateQuiltOrder(Order order, Quilt quilt, Recipient recipient, DesignBlock dblock);
+        bool CreateQuiltOrder(Order order, Quilt quilt, Recipient recipient, DesignBlock dblock,
+            List<OrderHistory> listOh, List<Award> listAw, List<BOM> listBom);
 
         //IUnitOfWork GetInformationStoreUow();
         //IRepository<Order> GetOrderInformationStore();

@@ -133,18 +133,18 @@ namespace SAYQuiltUI
             // Create some column headers for the data. 
             columnheader = new ColumnHeader();
             columnheader.Text = "Phase";
-            this.listView1.Columns.Add(columnheader);
+            listView1.Columns.Add(columnheader);
 
             columnheader = new ColumnHeader();
             columnheader.Text = "Start Date";
-            this.listView1.Columns.Add(columnheader);
+            listView1.Columns.Add(columnheader);
 
             columnheader = new ColumnHeader();
             columnheader.Text = "End Date";
-            this.listView1.Columns.Add(columnheader);
+            listView1.Columns.Add(columnheader);
 
             // Loop through and size each column header to fit the column header text.
-            foreach (ColumnHeader ch in this.listView1.Columns)
+            foreach (ColumnHeader ch in listView1.Columns)
             {
                 ch.Width = -2;
             }
@@ -171,18 +171,18 @@ namespace SAYQuiltUI
             // Create some column headers for the data. 
             columnheader = new ColumnHeader();
             columnheader.Text = "Awarding Body";
-            this.listView2.Columns.Add(columnheader);
+            listView2.Columns.Add(columnheader);
 
             columnheader = new ColumnHeader();
             columnheader.Text = "Date";
-            this.listView2.Columns.Add(columnheader);
+            listView2.Columns.Add(columnheader);
 
             columnheader = new ColumnHeader();
             columnheader.Text = "Description";
-            this.listView2.Columns.Add(columnheader);
+            listView2.Columns.Add(columnheader);
 
             // Loop through and size each column header to fit the column header text.
-            foreach (ColumnHeader ch in this.listView2.Columns)
+            foreach (ColumnHeader ch in listView2.Columns)
             {
                 ch.Width = -2;
             }
@@ -195,7 +195,7 @@ namespace SAYQuiltUI
                 ListViewItem listviewitem = new ListViewItem(item.TypeOfItem);
                 listviewitem.SubItems.Add(item.Count);
                 listviewitem.SubItems.Add(item.Description);
-                this.listView3.Items.Add(listviewitem);
+                listView3.Items.Add(listviewitem);
             }
         }
 
@@ -209,18 +209,18 @@ namespace SAYQuiltUI
             // Create some column headers for the data. 
             columnheader = new ColumnHeader();
             columnheader.Text = "Type of Item";
-            this.listView3.Columns.Add(columnheader);
+            listView3.Columns.Add(columnheader);
 
             columnheader = new ColumnHeader();
             columnheader.Text = "Count";
-            this.listView3.Columns.Add(columnheader);
+            listView3.Columns.Add(columnheader);
 
             columnheader = new ColumnHeader();
             columnheader.Text = "Description";
-            this.listView3.Columns.Add(columnheader);
+            listView3.Columns.Add(columnheader);
 
             // Loop through and size each column header to fit the column header text.
-            foreach (ColumnHeader ch in this.listView3.Columns)
+            foreach (ColumnHeader ch in listView3.Columns)
             {
                 ch.Width = -2;
             }

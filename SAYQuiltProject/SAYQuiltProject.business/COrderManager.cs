@@ -164,13 +164,14 @@ namespace SAYQuiltProject.business
         }
 
         // create quilt project/order entry
-        public bool CreateQuiltOrder(Order order, Quilt quilt, Recipient recipient, DesignBlock dblock)
+        public bool CreateQuiltOrder(Order order, Quilt quilt, Recipient recipient, DesignBlock dblock,
+            List<OrderHistory> listOh, List<Award> listAw, List<BOM> listBom)
         {
             ISimpleQuiltService simpleQuiltSvc = (ISimpleQuiltService)GetService("ISimpleQuiltService");
             bool bRet = false;
             try
             {
-                bRet = simpleQuiltSvc.CreateQuiltOrder(order, quilt, recipient, dblock);
+                bRet = simpleQuiltSvc.CreateQuiltOrder(order, quilt, recipient, dblock, listOh, listAw, listBom);
             }
             catch (Exception ex)
             {
