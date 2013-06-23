@@ -126,6 +126,26 @@ namespace SAYQuiltProject.business
             return blk;
         }
 
+        public bool DeleteOrderForce(string sQuiltOrderToDelete)
+        {
+            // ignore the business rule 
+            ISimpleQuiltService simpleQuiltSvc = (ISimpleQuiltService)GetService("ISimpleQuiltService");
+            Order orderToDelete = null;
+            try
+            {
+                orderToDelete = simpleQuiltSvc.GetOrder(sQuiltOrderToDelete);
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Exception: {0}", ex.Message);
+                return false;
+            }
+
+            bool bRet = simpleQuiltSvc.DeleteOrder(orderToDelete.OrderId);
+            return bRet;
+        }
+
+
         public bool DeleteOrder(string sQuiltOrderToDelete)
         {
             // the business rule might be don't allow delete unless the order is cancelled

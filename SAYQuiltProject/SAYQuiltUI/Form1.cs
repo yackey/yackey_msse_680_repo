@@ -50,8 +50,20 @@ namespace SAYQuiltUI
 
         private void toolStripDelete_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Todo.");
-            return;
+            doDeleteAction(sender, e);
+        }
+
+        private void doDeleteAction(object sender, EventArgs e)
+        {
+            if (bIsChildRunning == true)
+            {
+                MessageBox.Show("Only one activity permitted.");
+                return;
+            }
+
+            FormDelete child = new FormDelete(this);
+            child.Show();
+            bIsChildRunning = true;
         }
 
         private void toolStripCreate_Click(object sender, EventArgs e)

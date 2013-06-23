@@ -234,7 +234,7 @@ namespace SAYQuiltUI
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             f1.SetIsChildRunning(false);
-            this.Dispose(true);
+            Dispose(true);
         }
 
         private void cbQuiltNames_SelectedIndexChanged(object sender, EventArgs e)
