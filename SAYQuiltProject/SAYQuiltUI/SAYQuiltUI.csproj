@@ -68,6 +68,20 @@
     <Compile Include="FormDisplay.Designer.cs">
       <DependentUpon>FormDisplay.cs</DependentUpon>
     </Compile>
+    <Compile Include="PopupAward.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupAward.Designer.cs">
+      <DependentUpon>PopupAward.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupBom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupBom.Designer.cs">
+      <DependentUpon>PopupBom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupInfoAwards.cs" />
+    <Compile Include="PopupInfoBom.cs" />
     <Compile Include="PopupInfoOrderHistory.cs" />
     <Compile Include="PopupOrderHistory.cs">
       <SubType>Form</SubType>
@@ -88,6 +102,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDisplay.resx">
       <DependentUpon>FormDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupAward.resx">
+      <DependentUpon>PopupAward.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupBom.resx">
+      <DependentUpon>PopupBom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopupOrderHistory.resx">
       <DependentUpon>PopupOrderHistory.cs</DependentUpon>

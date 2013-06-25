@@ -24,6 +24,8 @@ namespace SAYQuiltUI
             f1 = parent;
             this.MdiParent = parent;
             SetupOrderHistory();
+            SetupAwards();
+            SetupBoms();
 
             COrderManager om = new COrderManager();
             CSimpleQuiltManager qm = new CSimpleQuiltManager();
@@ -119,26 +121,21 @@ namespace SAYQuiltUI
 
             // Awards
             List<Award> listAwards = new List<Award>();
-            if ((tbAwardBody1.Text.Length != 0) && (tbAwardDate1.Text.Length != 0) &&
-                (tbAwardDescription1.Text.Length != 0))
+            iCnt = lvAwards.Items.Count;
+            for (int i = 0; i < iCnt; i++)
             {
-                var aw = new Award
+                ListViewItem lvi1 = lvAwards.Items[i];
+                ListViewItem.ListViewSubItem si1 = lvi1.SubItems[0];
+                string sAwardingBody = si1.Text;
+                ListViewItem.ListViewSubItem si2 = lvi1.SubItems[1];
+                string sDate = si2.Text;
+                ListViewItem.ListViewSubItem si3 = lvi1.SubItems[2];
+                string sDescription = si3.Text;
+                var aw = new Award()
                 {
-                    AwardingBody = tbAwardBody1.Text,
-                    DateOfAward = tbAwardDate1.Text,
-                    Description = tbAwardDescription1.Text
-                };
-                listAwards.Add(aw);
-            }
-
-            if ((tbAwardBody2.Text.Length != 0) && (tbAwardDate2.Text.Length != 0) &&
-                (tbAwardDescription2.Text.Length != 0))
-            {
-                var aw = new Award
-                {
-                    AwardingBody = tbAwardBody2.Text,
-                    DateOfAward = tbAwardDate2.Text,
-                    Description = tbAwardDescription2.Text
+                    AwardingBody = sAwardingBody,
+                    DateOfAward = sDate,
+                    Description = sDescription
                 };
                 listAwards.Add(aw);
             }
@@ -146,30 +143,24 @@ namespace SAYQuiltUI
 
             // bom
             List<BOM> listBom = new List<BOM>();
-            if ((tbBomCount1.Text.Length != 0) && (tbBomDescription1.Text.Length != 0) &&
-                (tbBomType1.Text.Length != 0))
+            iCnt = lvBom.Items.Count;
+            for (int i = 0; i < iCnt; i++)
             {
-                var bom = new BOM
+                ListViewItem lvi1 = lvBom.Items[i];
+                ListViewItem.ListViewSubItem si1 = lvi1.SubItems[0];
+                string sTypeOfItem = si1.Text;
+                ListViewItem.ListViewSubItem si2 = lvi1.SubItems[1];
+                string sCount = si2.Text;
+                ListViewItem.ListViewSubItem si3 = lvi1.SubItems[2];
+                string sDescription = si3.Text;
+                var bom = new BOM()
                 {
-                    Count = tbBomCount1.Text,
-                    Description = tbBomDescription1.Text,
-                    TypeOfItem = tbBomType1.Text
+                    TypeOfItem = sTypeOfItem,
+                    Count = sCount,
+                    Description = sDescription
                 };
                 listBom.Add(bom);
             }
-
-            if ((tbBomCount2.Text.Length != 0) && (tbBomDescription2.Text.Length != 0) &&
-                (tbBomType2.Text.Length != 0))
-            {
-                var bom = new BOM
-                {
-                    Count = tbBomCount2.Text,
-                    Description = tbBomDescription2.Text,
-                    TypeOfItem = tbBomType2.Text
-                };
-                listBom.Add(bom);
-            }
-
             //
             //
             COrderManager om = new COrderManager();
@@ -294,6 +285,104 @@ namespace SAYQuiltUI
             listviewitem.SubItems.Add(popupInfo.sBeginDate);
             listviewitem.SubItems.Add(popupInfo.sEndDate);
             lvOrderHistory.Items.Add(listviewitem);
+        }
+
+        public void NotifyAward(PopupInfoAwards popupInfo)
+        {
+            // use the popupInfo that was passed back
+            ListViewItem listviewitem;
+
+            // Ensure that the view is set to show details.
+            lvAwards.View = View.Details;
+
+            listviewitem = new ListViewItem(popupInfo.sAwardingBody);
+            listviewitem.SubItems.Add(popupInfo.sDate);
+            listviewitem.SubItems.Add(popupInfo.sDescription);
+            lvAwards.Items.Add(listviewitem);
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SetupAwards()
+        {
+            ColumnHeader columnheader;		// Used for creating column headers.
+
+            // Ensure that the view is set to show details.
+            lvAwards.View = View.Details;
+
+            // Create some column headers for the data. 
+            columnheader = new ColumnHeader();
+            columnheader.Text = "Awarding Body";
+            lvAwards.Columns.Add(columnheader);
+
+            columnheader = new ColumnHeader();
+            columnheader.Text = "Date";
+            lvAwards.Columns.Add(columnheader);
+
+            columnheader = new ColumnHeader();
+            columnheader.Text = "Description";
+            lvAwards.Columns.Add(columnheader);
+
+            // Loop through and size each column header to fit the column header text.
+            foreach (ColumnHeader ch in lvAwards.Columns)
+            {
+                ch.Width = -2;
+            }
+        }
+
+        private void btnAddAward_Click(object sender, EventArgs e)
+        {
+            PopupAward popup = new PopupAward(this);
+            popup.Show();
+        }
+
+        private void SetupBoms()
+        {
+            ColumnHeader columnheader;		// Used for creating column headers.
+
+            // Ensure that the view is set to show details.
+            lvBom.View = View.Details;
+
+            // Create some column headers for the data. 
+            columnheader = new ColumnHeader();
+            columnheader.Text = "Type of Item";
+            lvBom.Columns.Add(columnheader);
+
+            columnheader = new ColumnHeader();
+            columnheader.Text = "Count";
+            lvBom.Columns.Add(columnheader);
+
+            columnheader = new ColumnHeader();
+            columnheader.Text = "Description";
+            lvBom.Columns.Add(columnheader);
+
+            // Loop through and size each column header to fit the column header text.
+            foreach (ColumnHeader ch in lvBom.Columns)
+            {
+                ch.Width = -2;
+            }
+        }
+        private void btnAddBom_Click(object sender, EventArgs e)
+        {
+            PopupBom popup = new PopupBom(this);
+            popup.Show();
+        }
+
+        public void NotifyBom(PopupInfoBom popupInfo)
+        {
+            // use the popupInfo that was passed back
+            ListViewItem listviewitem;
+
+            // Ensure that the view is set to show details.
+            lvBom.View = View.Details;
+
+            listviewitem = new ListViewItem(popupInfo.sType);
+            listviewitem.SubItems.Add(popupInfo.sCount);
+            listviewitem.SubItems.Add(popupInfo.sDescription);
+            lvBom.Items.Add(listviewitem);
         }
     }
 }

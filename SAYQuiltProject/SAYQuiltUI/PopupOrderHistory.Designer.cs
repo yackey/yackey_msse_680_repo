@@ -120,7 +120,7 @@
             this.Controls.Add(this.tbBeginDate);
             this.Controls.Add(this.tbPhase);
             this.Name = "PopupOrderHistory";
-            this.Text = "PopupOrderHistory";
+            this.Text = "Order History Item";
             this.ResumeLayout(false);
             this.PerformLayout();
 
