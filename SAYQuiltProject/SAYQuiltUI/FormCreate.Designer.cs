@@ -72,17 +72,11 @@
             this.tbAwardBody2 = new System.Windows.Forms.TextBox();
             this.tbAwardDate2 = new System.Windows.Forms.TextBox();
             this.tbAwardDescription2 = new System.Windows.Forms.TextBox();
-            this.lblOrderHistory = new System.Windows.Forms.Label();
-            this.tbOrderHistPhase1 = new System.Windows.Forms.TextBox();
-            this.tbOrderHistBegin1 = new System.Windows.Forms.TextBox();
-            this.tbOrderHistEnd1 = new System.Windows.Forms.TextBox();
-            this.lblOrderHistPhase = new System.Windows.Forms.Label();
-            this.lblOrderHistBegin = new System.Windows.Forms.Label();
-            this.lblOrderHistEnd = new System.Windows.Forms.Label();
-            this.tbOrderHistPhase2 = new System.Windows.Forms.TextBox();
-            this.tbOrderHistBegin2 = new System.Windows.Forms.TextBox();
-            this.tbOrderHistEnd2 = new System.Windows.Forms.TextBox();
+            this.lvOrderHistory = new System.Windows.Forms.ListView();
+            this.gbOrderHistory = new System.Windows.Forms.GroupBox();
+            this.btnAddOrderHistory = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
+            this.gbOrderHistory.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -91,7 +85,7 @@
             this.actionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(843, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(907, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -272,7 +266,7 @@
             // 
             // btnSubmitCreate
             // 
-            this.btnSubmitCreate.Location = new System.Drawing.Point(359, 441);
+            this.btnSubmitCreate.Location = new System.Drawing.Point(398, 441);
             this.btnSubmitCreate.Name = "btnSubmitCreate";
             this.btnSubmitCreate.Size = new System.Drawing.Size(75, 23);
             this.btnSubmitCreate.TabIndex = 21;
@@ -292,7 +286,7 @@
             // lblAwards
             // 
             this.lblAwards.AutoSize = true;
-            this.lblAwards.Location = new System.Drawing.Point(616, 310);
+            this.lblAwards.Location = new System.Drawing.Point(677, 309);
             this.lblAwards.Name = "lblAwards";
             this.lblAwards.Size = new System.Drawing.Size(54, 17);
             this.lblAwards.TabIndex = 27;
@@ -369,21 +363,21 @@
             // 
             // tbAwardBody1
             // 
-            this.tbAwardBody1.Location = new System.Drawing.Point(473, 352);
+            this.tbAwardBody1.Location = new System.Drawing.Point(534, 351);
             this.tbAwardBody1.Name = "tbAwardBody1";
             this.tbAwardBody1.Size = new System.Drawing.Size(107, 22);
             this.tbAwardBody1.TabIndex = 37;
             // 
             // tbAwardDate1
             // 
-            this.tbAwardDate1.Location = new System.Drawing.Point(590, 352);
+            this.tbAwardDate1.Location = new System.Drawing.Point(651, 351);
             this.tbAwardDate1.Name = "tbAwardDate1";
             this.tbAwardDate1.Size = new System.Drawing.Size(100, 22);
             this.tbAwardDate1.TabIndex = 38;
             // 
             // tbAwardDescription1
             // 
-            this.tbAwardDescription1.Location = new System.Drawing.Point(696, 352);
+            this.tbAwardDescription1.Location = new System.Drawing.Point(757, 351);
             this.tbAwardDescription1.Name = "tbAwardDescription1";
             this.tbAwardDescription1.Size = new System.Drawing.Size(130, 22);
             this.tbAwardDescription1.TabIndex = 39;
@@ -391,7 +385,7 @@
             // lblAwardBody
             // 
             this.lblAwardBody.AutoSize = true;
-            this.lblAwardBody.Location = new System.Drawing.Point(477, 333);
+            this.lblAwardBody.Location = new System.Drawing.Point(538, 332);
             this.lblAwardBody.Name = "lblAwardBody";
             this.lblAwardBody.Size = new System.Drawing.Size(102, 17);
             this.lblAwardBody.TabIndex = 40;
@@ -401,7 +395,7 @@
             // lblAwardDate
             // 
             this.lblAwardDate.AutoSize = true;
-            this.lblAwardDate.Location = new System.Drawing.Point(616, 332);
+            this.lblAwardDate.Location = new System.Drawing.Point(677, 331);
             this.lblAwardDate.Name = "lblAwardDate";
             this.lblAwardDate.Size = new System.Drawing.Size(38, 17);
             this.lblAwardDate.TabIndex = 41;
@@ -410,7 +404,7 @@
             // lblAwardDescription
             // 
             this.lblAwardDescription.AutoSize = true;
-            this.lblAwardDescription.Location = new System.Drawing.Point(722, 333);
+            this.lblAwardDescription.Location = new System.Drawing.Point(783, 332);
             this.lblAwardDescription.Name = "lblAwardDescription";
             this.lblAwardDescription.Size = new System.Drawing.Size(79, 17);
             this.lblAwardDescription.TabIndex = 42;
@@ -419,118 +413,59 @@
             // 
             // tbAwardBody2
             // 
-            this.tbAwardBody2.Location = new System.Drawing.Point(473, 382);
+            this.tbAwardBody2.Location = new System.Drawing.Point(534, 381);
             this.tbAwardBody2.Name = "tbAwardBody2";
             this.tbAwardBody2.Size = new System.Drawing.Size(107, 22);
             this.tbAwardBody2.TabIndex = 43;
             // 
             // tbAwardDate2
             // 
-            this.tbAwardDate2.Location = new System.Drawing.Point(590, 380);
+            this.tbAwardDate2.Location = new System.Drawing.Point(651, 379);
             this.tbAwardDate2.Name = "tbAwardDate2";
             this.tbAwardDate2.Size = new System.Drawing.Size(100, 22);
             this.tbAwardDate2.TabIndex = 44;
             // 
             // tbAwardDescription2
             // 
-            this.tbAwardDescription2.Location = new System.Drawing.Point(696, 380);
+            this.tbAwardDescription2.Location = new System.Drawing.Point(757, 379);
             this.tbAwardDescription2.Name = "tbAwardDescription2";
             this.tbAwardDescription2.Size = new System.Drawing.Size(130, 22);
             this.tbAwardDescription2.TabIndex = 45;
             // 
-            // lblOrderHistory
+            // lvOrderHistory
             // 
-            this.lblOrderHistory.AutoSize = true;
-            this.lblOrderHistory.Location = new System.Drawing.Point(615, 104);
-            this.lblOrderHistory.Name = "lblOrderHistory";
-            this.lblOrderHistory.Size = new System.Drawing.Size(93, 17);
-            this.lblOrderHistory.TabIndex = 23;
-            this.lblOrderHistory.Text = "Order History";
-            this.lblOrderHistory.Click += new System.EventHandler(this.lblOrderHistory_Click);
+            this.lvOrderHistory.Location = new System.Drawing.Point(25, 23);
+            this.lvOrderHistory.Name = "lvOrderHistory";
+            this.lvOrderHistory.Size = new System.Drawing.Size(312, 90);
+            this.lvOrderHistory.TabIndex = 55;
+            this.lvOrderHistory.UseCompatibleStateImageBehavior = false;
             // 
-            // tbOrderHistPhase1
+            // gbOrderHistory
             // 
-            this.tbOrderHistPhase1.Location = new System.Drawing.Point(512, 141);
-            this.tbOrderHistPhase1.Name = "tbOrderHistPhase1";
-            this.tbOrderHistPhase1.Size = new System.Drawing.Size(100, 22);
-            this.tbOrderHistPhase1.TabIndex = 46;
+            this.gbOrderHistory.Controls.Add(this.btnAddOrderHistory);
+            this.gbOrderHistory.Controls.Add(this.lvOrderHistory);
+            this.gbOrderHistory.Location = new System.Drawing.Point(538, 109);
+            this.gbOrderHistory.Name = "gbOrderHistory";
+            this.gbOrderHistory.Size = new System.Drawing.Size(355, 151);
+            this.gbOrderHistory.TabIndex = 56;
+            this.gbOrderHistory.TabStop = false;
+            this.gbOrderHistory.Text = "Order History";
             // 
-            // tbOrderHistBegin1
+            // btnAddOrderHistory
             // 
-            this.tbOrderHistBegin1.Location = new System.Drawing.Point(618, 141);
-            this.tbOrderHistBegin1.Name = "tbOrderHistBegin1";
-            this.tbOrderHistBegin1.Size = new System.Drawing.Size(100, 22);
-            this.tbOrderHistBegin1.TabIndex = 47;
-            // 
-            // tbOrderHistEnd1
-            // 
-            this.tbOrderHistEnd1.Location = new System.Drawing.Point(724, 141);
-            this.tbOrderHistEnd1.Name = "tbOrderHistEnd1";
-            this.tbOrderHistEnd1.Size = new System.Drawing.Size(100, 22);
-            this.tbOrderHistEnd1.TabIndex = 48;
-            // 
-            // lblOrderHistPhase
-            // 
-            this.lblOrderHistPhase.AutoSize = true;
-            this.lblOrderHistPhase.Location = new System.Drawing.Point(547, 121);
-            this.lblOrderHistPhase.Name = "lblOrderHistPhase";
-            this.lblOrderHistPhase.Size = new System.Drawing.Size(48, 17);
-            this.lblOrderHistPhase.TabIndex = 49;
-            this.lblOrderHistPhase.Text = "Phase";
-            // 
-            // lblOrderHistBegin
-            // 
-            this.lblOrderHistBegin.AutoSize = true;
-            this.lblOrderHistBegin.Location = new System.Drawing.Point(635, 121);
-            this.lblOrderHistBegin.Name = "lblOrderHistBegin";
-            this.lblOrderHistBegin.Size = new System.Drawing.Size(44, 17);
-            this.lblOrderHistBegin.TabIndex = 50;
-            this.lblOrderHistBegin.Text = "Begin";
-            // 
-            // lblOrderHistEnd
-            // 
-            this.lblOrderHistEnd.AutoSize = true;
-            this.lblOrderHistEnd.Location = new System.Drawing.Point(759, 118);
-            this.lblOrderHistEnd.Name = "lblOrderHistEnd";
-            this.lblOrderHistEnd.Size = new System.Drawing.Size(33, 17);
-            this.lblOrderHistEnd.TabIndex = 51;
-            this.lblOrderHistEnd.Text = "End";
-            // 
-            // tbOrderHistPhase2
-            // 
-            this.tbOrderHistPhase2.Location = new System.Drawing.Point(512, 171);
-            this.tbOrderHistPhase2.Name = "tbOrderHistPhase2";
-            this.tbOrderHistPhase2.Size = new System.Drawing.Size(100, 22);
-            this.tbOrderHistPhase2.TabIndex = 52;
-            // 
-            // tbOrderHistBegin2
-            // 
-            this.tbOrderHistBegin2.Location = new System.Drawing.Point(618, 170);
-            this.tbOrderHistBegin2.Name = "tbOrderHistBegin2";
-            this.tbOrderHistBegin2.Size = new System.Drawing.Size(100, 22);
-            this.tbOrderHistBegin2.TabIndex = 53;
-            // 
-            // tbOrderHistEnd2
-            // 
-            this.tbOrderHistEnd2.Location = new System.Drawing.Point(724, 171);
-            this.tbOrderHistEnd2.Name = "tbOrderHistEnd2";
-            this.tbOrderHistEnd2.Size = new System.Drawing.Size(100, 22);
-            this.tbOrderHistEnd2.TabIndex = 54;
+            this.btnAddOrderHistory.Location = new System.Drawing.Point(122, 119);
+            this.btnAddOrderHistory.Name = "btnAddOrderHistory";
+            this.btnAddOrderHistory.Size = new System.Drawing.Size(75, 23);
+            this.btnAddOrderHistory.TabIndex = 56;
+            this.btnAddOrderHistory.Text = "Add Item";
+            this.btnAddOrderHistory.UseVisualStyleBackColor = true;
+            this.btnAddOrderHistory.Click += new System.EventHandler(this.btnAddOrderHistory_Click);
             // 
             // FormCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(843, 476);
-            this.Controls.Add(this.tbOrderHistEnd2);
-            this.Controls.Add(this.tbOrderHistBegin2);
-            this.Controls.Add(this.tbOrderHistPhase2);
-            this.Controls.Add(this.lblOrderHistEnd);
-            this.Controls.Add(this.lblOrderHistBegin);
-            this.Controls.Add(this.lblOrderHistPhase);
-            this.Controls.Add(this.tbOrderHistEnd1);
-            this.Controls.Add(this.tbOrderHistBegin1);
-            this.Controls.Add(this.tbOrderHistPhase1);
+            this.ClientSize = new System.Drawing.Size(907, 476);
             this.Controls.Add(this.tbAwardDescription2);
             this.Controls.Add(this.tbAwardDate2);
             this.Controls.Add(this.tbAwardBody2);
@@ -551,7 +486,6 @@
             this.Controls.Add(this.tbBomType1);
             this.Controls.Add(this.lblAwards);
             this.Controls.Add(this.lblComponents);
-            this.Controls.Add(this.lblOrderHistory);
             this.Controls.Add(this.btnSubmitCreate);
             this.Controls.Add(this.lblDesignBlockGenesis);
             this.Controls.Add(this.tbDesignBlockGenesis);
@@ -574,12 +508,14 @@
             this.Controls.Add(this.lblQuiltName);
             this.Controls.Add(this.tbQuiltName);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.gbOrderHistory);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormCreate";
             this.Text = "Create Quilt Project";
             this.Load += new System.EventHandler(this.FormCreate_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.gbOrderHistory.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -631,15 +567,8 @@
         private System.Windows.Forms.TextBox tbAwardBody2;
         private System.Windows.Forms.TextBox tbAwardDate2;
         private System.Windows.Forms.TextBox tbAwardDescription2;
-        private System.Windows.Forms.Label lblOrderHistory;
-        private System.Windows.Forms.TextBox tbOrderHistPhase1;
-        private System.Windows.Forms.TextBox tbOrderHistBegin1;
-        private System.Windows.Forms.TextBox tbOrderHistEnd1;
-        private System.Windows.Forms.Label lblOrderHistPhase;
-        private System.Windows.Forms.Label lblOrderHistBegin;
-        private System.Windows.Forms.Label lblOrderHistEnd;
-        private System.Windows.Forms.TextBox tbOrderHistPhase2;
-        private System.Windows.Forms.TextBox tbOrderHistBegin2;
-        private System.Windows.Forms.TextBox tbOrderHistEnd2;
+        private System.Windows.Forms.ListView lvOrderHistory;
+        private System.Windows.Forms.GroupBox gbOrderHistory;
+        private System.Windows.Forms.Button btnAddOrderHistory;
     }
 }

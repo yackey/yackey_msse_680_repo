@@ -23,6 +23,7 @@ namespace SAYQuiltUI
             InitializeComponent();
             f1 = parent;
             this.MdiParent = parent;
+            SetupOrderHistory();
 
             COrderManager om = new COrderManager();
             CSimpleQuiltManager qm = new CSimpleQuiltManager();
@@ -95,27 +96,21 @@ namespace SAYQuiltUI
             // Order History
             // Is there no editable collection  control - ugh
             List<OrderHistory> listOrderHistory = new List<OrderHistory>();
-            if ((tbOrderHistPhase1.Text.Length != 0) && (tbOrderHistBegin1.Text.Length != 0) &&
-                (tbOrderHistEnd1.Text.Length != 0))
+            int iCnt = lvOrderHistory.Items.Count;
+            for (int i = 0; i < iCnt; i++)
             {
-                var oh = new OrderHistory
-                    {
-                        BeginDate = tbOrderHistBegin1.Text,
-                        EndDate = tbOrderHistEnd1.Text,
-                        Phase = tbOrderHistPhase1.Text,
-                        Comments = ""
-                    };
-                listOrderHistory.Add(oh);
-            }
-
-            if ((tbOrderHistPhase2.Text.Length != 0) && (tbOrderHistBegin2.Text.Length != 0) && 
-                (tbOrderHistEnd2.Text.Length != 0))
-            {
+                ListViewItem lvi1 = lvOrderHistory.Items[i];
+                ListViewItem.ListViewSubItem si1 = lvi1.SubItems[0];
+                string sPhase = si1.Text;
+                ListViewItem.ListViewSubItem si2 = lvi1.SubItems[1];
+                string sBeginDate = si2.Text;
+                ListViewItem.ListViewSubItem si3 = lvi1.SubItems[2];
+                string sEndDate = si3.Text;
                 var oh = new OrderHistory
                 {
-                    BeginDate = tbOrderHistBegin2.Text,
-                    EndDate = tbOrderHistEnd2.Text,
-                    Phase = tbOrderHistPhase2.Text,
+                    BeginDate = sBeginDate,
+                    EndDate = sEndDate,
+                    Phase = sPhase,
                     Comments = ""
                 };
                 listOrderHistory.Add(oh);
@@ -252,6 +247,53 @@ namespace SAYQuiltUI
         private void lblOrderHistory_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void SetupOrderHistory()
+        {
+            ColumnHeader columnheader;		// Used for creating column headers.
+
+            // Ensure that the view is set to show details.
+            lvOrderHistory.View = View.Details;
+
+            // Create some column headers for the data. 
+            columnheader = new ColumnHeader();
+            columnheader.Text = "Phase";
+            lvOrderHistory.Columns.Add(columnheader);
+
+            columnheader = new ColumnHeader();
+            columnheader.Text = "Start Date";
+            lvOrderHistory.Columns.Add(columnheader);
+
+            columnheader = new ColumnHeader();
+            columnheader.Text = "End Date";
+            lvOrderHistory.Columns.Add(columnheader);
+
+            // Loop through and size each column header to fit the column header text.
+            foreach (ColumnHeader ch in lvOrderHistory.Columns)
+            {
+                ch.Width = -2;
+            }
+        }
+
+        private void btnAddOrderHistory_Click(object sender, EventArgs e)
+        {
+            PopupOrderHistory popup = new PopupOrderHistory(this);
+            popup.Show();
+        }
+
+        public void Notify(PopupInfoOrderHistory popupInfo)
+        {
+            // use the popupInfo that was passed back
+            ListViewItem listviewitem;
+
+            // Ensure that the view is set to show details.
+            lvOrderHistory.View = View.Details;
+
+            listviewitem = new ListViewItem(popupInfo.sPhase);
+            listviewitem.SubItems.Add(popupInfo.sBeginDate);
+            listviewitem.SubItems.Add(popupInfo.sEndDate);
+            lvOrderHistory.Items.Add(listviewitem);
         }
     }
 }
